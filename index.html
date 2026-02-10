@@ -3,550 +3,492 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Casa Smart Facile - Domotica fai-da-te del Futuro</title>
-    <meta name="description" content="Guida completa alla domotica fai-da-te. Trasforma la tua casa in una smart home spendendo poco. Tutorial, guide e recensioni.">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 60'%3E%3Cpath d='M 15 30 L 15 50 L 45 50 L 45 30 Z' fill='%231a1a2e' stroke='%2300d4ff' stroke-width='2'/%3E%3Cpath d='M 10 30 L 30 10 L 50 30 Z' fill='%23e94560'/%3E%3C/svg%3E">
-    <meta property="og:title" content="Casa Smart Facile - Domotica fai-da-te">
-    <meta property="og:description" content="Guide pratiche per trasformare la tua casa in una smart home.">
+    <title>Casa Smart Facile - Il Futuro della Tua Casa</title>
+    <meta name="description" content="Trasforma la tua casa in una smart home futuristica. Guide pratiche, prodotti testati, tutorial step-by-step.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
+    <meta property="og:title" content="Casa Smart Facile - Domotica Fai-da-Te">
+    <meta property="og:description" content="Trasforma la tua casa in una smart home.">
     <meta property="og:type" content="website">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap');
+        
+        :root {
+            --void: #000000;
+            --deep: #0a0014;
+            --panel: rgba(20, 10, 40, 0.6);
+            --glow-1: #00ffcc;
+            --glow-2: #ff00aa;
+            --glow-3: #4400ff;
+            --glow-4: #ff6600;
+            --white: #ffffff;
+            --gray: rgba(255,255,255,0.6);
+        }
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
-        :root {
-            --bg-dark: #030014;
-            --bg-panel: rgba(15, 10, 40, 0.7);
-            --neon-cyan: #00f5ff;
-            --neon-magenta: #ff00ff;
-            --neon-red: #ff2a6d;
-            --neon-blue: #05d9e8;
-            --neon-purple: #7b2dff;
-            --text: #ffffff;
-            --text-dim: rgba(255,255,255,0.6);
-        }
+        html { scroll-behavior: smooth; }
         
         body {
-            font-family: 'Rajdhani', sans-serif;
-            background: var(--bg-dark);
-            color: var(--text);
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--void);
+            color: var(--white);
             overflow-x: hidden;
-            perspective: 1000px;
         }
         
-        /* === ANIMATED BACKGROUND === */
-        .bg-animation {
+        /* ═══════════════════════════════════════════
+           COSMIC BACKGROUND
+        ═══════════════════════════════════════════ */
+        .cosmos {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -10;
             background: 
-                radial-gradient(ellipse at 20% 20%, rgba(123, 45, 255, 0.15) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 80%, rgba(0, 245, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 50%, rgba(255, 0, 255, 0.05) 0%, transparent 70%),
-                var(--bg-dark);
+                radial-gradient(ellipse at 10% 0%, rgba(0,255,204,0.15) 0%, transparent 40%),
+                radial-gradient(ellipse at 90% 20%, rgba(255,0,170,0.1) 0%, transparent 40%),
+                radial-gradient(ellipse at 50% 100%, rgba(68,0,255,0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 0% 60%, rgba(255,102,0,0.08) 0%, transparent 30%),
+                var(--void);
         }
         
-        .grid-overlay {
+        .stars {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(rgba(0, 245, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 245, 255, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            z-index: -1;
-            animation: gridMove 20s linear infinite;
+            width: 100%; height: 100%;
+            z-index: -9;
         }
         
-        @keyframes gridMove {
-            0% { transform: perspective(500px) rotateX(60deg) translateY(0); }
-            100% { transform: perspective(500px) rotateX(60deg) translateY(50px); }
-        }
-        
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-        }
-        
-        .particle {
+        .star {
             position: absolute;
-            width: 3px;
-            height: 3px;
-            background: var(--neon-cyan);
+            width: 2px; height: 2px;
+            background: white;
             border-radius: 50%;
-            box-shadow: 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-cyan);
-            animation: float 15s infinite ease-in-out;
+            animation: twinkle 3s infinite ease-in-out;
         }
         
-        @keyframes float {
-            0%, 100% { transform: translateY(100vh) scale(0); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-100vh) scale(1); opacity: 0; }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
         }
         
-        /* === HEADER === */
-        header {
+        .meteor {
             position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            background: rgba(3, 0, 20, 0.8);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0, 245, 255, 0.2);
+            width: 150px; height: 2px;
+            background: linear-gradient(90deg, var(--glow-1), transparent);
+            animation: meteor 8s linear infinite;
+            opacity: 0;
         }
         
+        @keyframes meteor {
+            0% { transform: translate(-200px, -100px) rotate(35deg); opacity: 0; }
+            5% { opacity: 1; }
+            30% { opacity: 0; }
+            100% { transform: translate(calc(100vw + 200px), calc(100vh + 100px)) rotate(35deg); opacity: 0; }
+        }
+        
+        /* ═══════════════════════════════════════════
+           NAVIGATION
+        ═══════════════════════════════════════════ */
         nav {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 15px 30px;
+            position: fixed;
+            top: 0; width: 100%;
+            z-index: 9999;
+            padding: 20px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background: linear-gradient(180deg, rgba(0,0,0,0.9) 0%, transparent 100%);
         }
         
         .logo {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-magenta));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 30px rgba(0, 245, 255, 0.5);
-            letter-spacing: 2px;
+            font-family: 'Syne', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: -1px;
         }
         
-        nav ul {
+        .logo span { color: var(--glow-1); }
+        
+        .nav-links {
             display: flex;
+            gap: 40px;
             list-style: none;
-            gap: 30px;
         }
         
-        nav a {
-            color: var(--text-dim);
+        .nav-links a {
+            color: var(--gray);
             text-decoration: none;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 500;
-            text-transform: uppercase;
             letter-spacing: 1px;
             transition: all 0.3s;
-            position: relative;
         }
         
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--neon-cyan);
-            box-shadow: 0 0 10px var(--neon-cyan);
-            transition: width 0.3s;
+        .nav-links a:hover {
+            color: var(--glow-1);
+            text-shadow: 0 0 20px var(--glow-1);
         }
         
-        nav a:hover { color: var(--neon-cyan); }
-        nav a:hover::after { width: 100%; }
-        
-        /* === HERO === */
+        /* ═══════════════════════════════════════════
+           HERO - IMMERSIVE EXPERIENCE
+        ═══════════════════════════════════════════ */
         .hero {
             min-height: 100vh;
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
-            padding: 120px 30px 80px;
+            align-items: center;
+            text-align: center;
+            padding: 120px 20px 60px;
             position: relative;
         }
         
-        .hero-content {
-            max-width: 1400px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
+        .hero-badge {
+            display: inline-flex;
             align-items: center;
+            gap: 8px;
+            background: rgba(0,255,204,0.1);
+            border: 1px solid rgba(0,255,204,0.3);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--glow-1);
+            margin-bottom: 30px;
+            animation: pulse 2s infinite;
         }
         
-        .hero-text h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 3.5rem;
-            font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            text-transform: uppercase;
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(0,255,204,0.4); }
+            50% { box-shadow: 0 0 0 15px rgba(0,255,204,0); }
         }
         
-        .hero-text h1 .gradient {
-            background: linear-gradient(135deg, var(--neon-cyan) 0%, var(--neon-magenta) 50%, var(--neon-red) 100%);
+        .hero h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(3rem, 10vw, 7rem);
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 30px;
+            letter-spacing: -3px;
+        }
+        
+        .hero h1 .line-1 {
+            display: block;
+            background: linear-gradient(90deg, var(--glow-1), var(--glow-2));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: gradientShift 3s ease infinite;
-            background-size: 200% 200%;
         }
         
-        @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
+        .hero h1 .line-2 {
+            display: block;
+            font-size: 0.5em;
+            color: var(--gray);
+            letter-spacing: 5px;
+            font-weight: 400;
+            margin-top: 10px;
         }
         
-        .hero-text p {
-            font-size: 1.3rem;
-            color: var(--text-dim);
-            margin-bottom: 40px;
+        .hero-desc {
+            font-size: 1.2rem;
+            color: var(--gray);
             max-width: 500px;
+            margin-bottom: 50px;
+            line-height: 1.7;
         }
         
-        .cta-buttons {
+        .hero-cta {
             display: flex;
             gap: 20px;
+            margin-bottom: 80px;
         }
         
-        .btn-primary {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
+        .btn {
             padding: 18px 40px;
-            background: linear-gradient(135deg, var(--neon-magenta), var(--neon-purple));
-            color: white;
-            text-decoration: none;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 700;
+            border-radius: 50px;
+            font-family: 'Space Grotesk', sans-serif;
             font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            border: none;
-            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s;
-            box-shadow: 0 0 30px rgba(255, 0, 255, 0.4);
         }
         
-        .btn-primary:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 0 50px rgba(255, 0, 255, 0.6);
+        .btn-glow {
+            background: linear-gradient(135deg, var(--glow-1), var(--glow-2));
+            color: var(--void);
+            box-shadow: 0 20px 40px rgba(0,255,204,0.3);
         }
         
-        .btn-secondary {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 18px 40px;
+        .btn-glow:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 30px 60px rgba(0,255,204,0.4);
+        }
+        
+        .btn-ghost {
             background: transparent;
-            color: var(--neon-cyan);
-            text-decoration: none;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 700;
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            border: 2px solid var(--neon-cyan);
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 0 20px rgba(0, 245, 255, 0.2), inset 0 0 20px rgba(0, 245, 255, 0.1);
+            color: var(--white);
+            border: 2px solid rgba(255,255,255,0.3);
         }
         
-        .btn-secondary:hover {
-            background: rgba(0, 245, 255, 0.1);
-            box-shadow: 0 0 40px rgba(0, 245, 255, 0.4), inset 0 0 30px rgba(0, 245, 255, 0.2);
+        .btn-ghost:hover {
+            border-color: var(--glow-1);
+            color: var(--glow-1);
+            box-shadow: inset 0 0 30px rgba(0,255,204,0.1);
         }
         
-        /* === 3D HOUSE === */
-        .hero-3d {
-            perspective: 1000px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .house-container {
-            width: 400px;
-            height: 400px;
+        /* 3D Floating House */
+        .hero-visual {
             position: relative;
-            transform-style: preserve-3d;
-            animation: houseRotate 20s linear infinite;
+            width: 300px;
+            height: 300px;
+            perspective: 1000px;
         }
         
-        @keyframes houseRotate {
-            0% { transform: rotateY(0deg) rotateX(10deg); }
-            100% { transform: rotateY(360deg) rotateX(10deg); }
-        }
-        
-        .house-base {
-            position: absolute;
-            width: 200px;
-            height: 150px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            transform-style: preserve-3d;
-        }
-        
-        .house-face {
-            position: absolute;
-            background: linear-gradient(180deg, rgba(0, 245, 255, 0.1) 0%, rgba(123, 45, 255, 0.2) 100%);
-            border: 2px solid var(--neon-cyan);
-            box-shadow: 0 0 20px rgba(0, 245, 255, 0.3), inset 0 0 30px rgba(0, 245, 255, 0.1);
-        }
-        
-        .house-front {
-            width: 200px;
-            height: 150px;
-            transform: translateZ(75px);
-        }
-        
-        .house-back {
-            width: 200px;
-            height: 150px;
-            transform: translateZ(-75px) rotateY(180deg);
-        }
-        
-        .house-left {
-            width: 150px;
-            height: 150px;
-            left: -75px;
-            transform: rotateY(-90deg) translateZ(25px);
-        }
-        
-        .house-right {
-            width: 150px;
-            height: 150px;
-            right: -75px;
-            transform: rotateY(90deg) translateZ(175px);
-        }
-        
-        .house-roof {
-            position: absolute;
-            width: 0;
-            height: 0;
-            border-left: 130px solid transparent;
-            border-right: 130px solid transparent;
-            border-bottom: 80px solid rgba(255, 0, 255, 0.3);
-            top: -80px;
-            left: 50%;
-            transform: translateX(-50%);
-            filter: drop-shadow(0 0 20px rgba(255, 0, 255, 0.5));
-        }
-        
-        .house-window {
-            position: absolute;
-            width: 40px;
-            height: 40px;
-            background: rgba(0, 245, 255, 0.3);
-            border: 2px solid var(--neon-cyan);
-            box-shadow: 0 0 15px var(--neon-cyan), inset 0 0 15px rgba(0, 245, 255, 0.5);
-            animation: windowGlow 2s ease-in-out infinite alternate;
-        }
-        
-        @keyframes windowGlow {
-            0% { box-shadow: 0 0 15px var(--neon-cyan), inset 0 0 15px rgba(0, 245, 255, 0.5); }
-            100% { box-shadow: 0 0 30px var(--neon-cyan), inset 0 0 30px rgba(0, 245, 255, 0.8); }
-        }
-        
-        .window-1 { top: 30px; left: 30px; }
-        .window-2 { top: 30px; right: 30px; }
-        .window-3 { top: 90px; left: 30px; animation-delay: 0.5s; }
-        .window-4 { top: 90px; right: 30px; animation-delay: 1s; }
-        
-        .floating-icons {
-            position: absolute;
+        .floating-house {
             width: 100%;
             height: 100%;
+            position: relative;
             transform-style: preserve-3d;
+            animation: floatHouse 6s ease-in-out infinite;
         }
         
-        .float-icon {
+        @keyframes floatHouse {
+            0%, 100% { transform: translateY(0) rotateY(0deg) rotateX(5deg); }
+            50% { transform: translateY(-20px) rotateY(180deg) rotateX(-5deg); }
+        }
+        
+        .house-emoji {
+            font-size: 120px;
+            filter: drop-shadow(0 0 50px var(--glow-1)) drop-shadow(0 0 100px var(--glow-2));
+        }
+        
+        .orbit {
             position: absolute;
-            font-size: 2.5rem;
-            animation: iconFloat 4s ease-in-out infinite;
-            filter: drop-shadow(0 0 15px var(--neon-cyan));
+            border: 1px dashed rgba(0,255,204,0.3);
+            border-radius: 50%;
+            animation: orbit 10s linear infinite;
         }
         
-        .icon-1 { top: 10%; left: 10%; animation-delay: 0s; }
-        .icon-2 { top: 20%; right: 5%; animation-delay: 0.5s; }
-        .icon-3 { bottom: 20%; left: 5%; animation-delay: 1s; }
-        .icon-4 { bottom: 10%; right: 10%; animation-delay: 1.5s; }
-        .icon-5 { top: 50%; left: -5%; animation-delay: 2s; }
-        .icon-6 { top: 50%; right: -5%; animation-delay: 2.5s; }
+        .orbit-1 { width: 250px; height: 250px; top: 25px; left: 25px; }
+        .orbit-2 { width: 350px; height: 350px; top: -25px; left: -25px; animation-duration: 15s; animation-direction: reverse; }
         
-        @keyframes iconFloat {
-            0%, 100% { transform: translateY(0) rotateY(0deg); }
-            50% { transform: translateY(-20px) rotateY(180deg); }
+        @keyframes orbit { from { transform: rotateZ(0deg); } to { transform: rotateZ(360deg); } }
+        
+        .orbit-icon {
+            position: absolute;
+            font-size: 30px;
+            filter: drop-shadow(0 0 15px var(--glow-1));
         }
         
-        /* === PRODUCTS === */
+        .orbit-1 .orbit-icon:nth-child(1) { top: -15px; left: 50%; transform: translateX(-50%); }
+        .orbit-1 .orbit-icon:nth-child(2) { bottom: -15px; left: 50%; transform: translateX(-50%); }
+        .orbit-1 .orbit-icon:nth-child(3) { left: -15px; top: 50%; transform: translateY(-50%); }
+        .orbit-1 .orbit-icon:nth-child(4) { right: -15px; top: 50%; transform: translateY(-50%); }
+        
+        /* ═══════════════════════════════════════════
+           SCROLL INDICATOR
+        ═══════════════════════════════════════════ */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            animation: bounce 2s infinite;
+        }
+        
+        .scroll-indicator span {
+            font-size: 0.75rem;
+            color: var(--gray);
+            letter-spacing: 2px;
+        }
+        
+        .scroll-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(180deg, var(--glow-1), transparent);
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+        
+        /* ═══════════════════════════════════════════
+           PRODUCTS - FEATURED SECTION
+        ═══════════════════════════════════════════ */
         .products {
-            padding: 100px 30px;
+            padding: 100px 20px;
             position: relative;
         }
         
-        .section-header {
-            text-align: center;
+        .section-label {
+            display: inline-block;
+            color: var(--glow-2);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+        
+        .section-title {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+        }
+        
+        .section-desc {
+            color: var(--gray);
+            font-size: 1.1rem;
+            max-width: 500px;
             margin-bottom: 60px;
         }
         
-        .section-header h2 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-magenta));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .section-header p {
-            color: var(--text-dim);
-            font-size: 1.2rem;
+        .products-header {
+            text-align: center;
+            margin-bottom: 60px;
         }
         
         .products-grid {
             max-width: 1400px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            perspective: 1000px;
         }
         
         .product-card {
-            background: var(--bg-panel);
+            background: var(--panel);
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(0, 245, 255, 0.2);
-            border-radius: 20px;
-            padding: 30px;
-            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 30px;
+            padding: 40px 30px;
             position: relative;
-            transform-style: preserve-3d;
             transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            overflow: visible;
+            overflow: hidden;
         }
         
         .product-card::before {
             content: '';
             position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-magenta), var(--neon-purple));
-            border-radius: 22px;
-            z-index: -1;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(0,255,204,0.1), rgba(255,0,170,0.1));
             opacity: 0;
             transition: opacity 0.5s;
         }
         
         .product-card:hover {
-            transform: translateY(-20px) rotateX(10deg) rotateY(-5deg) scale(1.05);
+            transform: translateY(-20px) scale(1.02);
+            border-color: var(--glow-1);
             box-shadow: 
-                0 50px 100px rgba(0, 245, 255, 0.3),
-                0 30px 60px rgba(255, 0, 255, 0.2);
+                0 50px 100px rgba(0,255,204,0.2),
+                0 0 0 1px rgba(0,255,204,0.5);
         }
         
-        .product-card:hover::before {
-            opacity: 1;
-        }
+        .product-card:hover::before { opacity: 1; }
         
         .product-badge {
             position: absolute;
-            top: -10px;
-            right: 20px;
-            background: linear-gradient(135deg, var(--neon-red), var(--neon-magenta));
-            color: white;
-            padding: 8px 15px;
+            top: 25px; right: 25px;
+            background: linear-gradient(135deg, var(--glow-4), var(--glow-2));
+            padding: 8px 16px;
             border-radius: 20px;
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             font-weight: 700;
-            text-transform: uppercase;
             letter-spacing: 1px;
-            box-shadow: 0 5px 20px rgba(255, 42, 109, 0.4);
-            z-index: 10;
+            text-transform: uppercase;
         }
         
-        .product-icon {
-            font-size: 4rem;
-            margin-bottom: 15px;
-            filter: drop-shadow(0 0 20px var(--neon-cyan));
-            animation: iconPulse 3s ease-in-out infinite;
+        .product-visual {
+            font-size: 80px;
+            text-align: center;
+            margin-bottom: 25px;
+            filter: drop-shadow(0 0 30px var(--glow-1));
+            transition: transform 0.5s;
         }
         
-        @keyframes iconPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+        .product-card:hover .product-visual {
+            transform: scale(1.2) rotate(10deg);
         }
         
-        .product-card h3 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.1rem;
+        .product-name {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.3rem;
             font-weight: 700;
             margin-bottom: 10px;
-            color: var(--neon-cyan);
+            color: var(--white);
+            position: relative;
+            z-index: 1;
         }
         
-        .product-card > p {
-            color: var(--text-dim);
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-            line-height: 1.5;
+        .product-desc {
+            color: var(--gray);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
         }
         
-        .product-rating {
-            margin-bottom: 10px;
-            color: #ffd700;
-            font-size: 1rem;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        .product-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
         }
         
         .product-price {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 900;
-            color: var(--neon-magenta);
-            margin-bottom: 20px;
-            text-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+            font-family: 'Syne', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--glow-1);
+            text-shadow: 0 0 30px var(--glow-1);
         }
         
-        .affiliate-btn {
-            display: inline-block;
+        .product-rating {
+            color: #ffd700;
+            font-size: 0.9rem;
+        }
+        
+        .product-btn {
+            display: block;
             width: 100%;
-            padding: 15px 25px;
+            padding: 18px;
             background: linear-gradient(135deg, #ff9900, #ff6600);
             color: white;
             text-decoration: none;
-            font-family: 'Orbitron', sans-serif;
+            text-align: center;
             font-weight: 700;
-            font-size: 0.9rem;
-            text-transform: uppercase;
+            font-size: 0.95rem;
             letter-spacing: 1px;
-            border-radius: 10px;
+            border-radius: 15px;
             transition: all 0.3s;
-            box-shadow: 0 10px 30px rgba(255, 153, 0, 0.4);
             position: relative;
-            z-index: 100;
+            z-index: 10;
             cursor: pointer;
         }
         
-        .affiliate-btn:hover {
+        .product-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(255, 153, 0, 0.6);
+            box-shadow: 0 20px 40px rgba(255,153,0,0.4);
         }
         
-        /* === FEATURES === */
+        /* ═══════════════════════════════════════════
+           FEATURES - BENEFITS
+        ═══════════════════════════════════════════ */
         .features {
-            padding: 100px 30px;
-            background: linear-gradient(180deg, transparent 0%, rgba(123, 45, 255, 0.05) 50%, transparent 100%);
+            padding: 150px 20px;
+            background: linear-gradient(180deg, transparent 0%, rgba(68,0,255,0.05) 50%, transparent 100%);
+        }
+        
+        .features-header {
+            text-align: center;
+            margin-bottom: 80px;
         }
         
         .features-grid {
@@ -554,63 +496,53 @@
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+            gap: 40px;
         }
         
         .feature-card {
-            background: var(--bg-panel);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(0, 245, 255, 0.1);
-            border-radius: 20px;
-            padding: 40px 30px;
             text-align: center;
+            padding: 50px 30px;
+            border-radius: 30px;
+            background: var(--panel);
+            border: 1px solid rgba(255,255,255,0.05);
             transition: all 0.4s;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .feature-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 245, 255, 0.1), transparent);
-            transition: left 0.5s;
-        }
-        
-        .feature-card:hover::after {
-            left: 100%;
         }
         
         .feature-card:hover {
-            border-color: var(--neon-cyan);
+            background: rgba(68,0,255,0.1);
+            border-color: var(--glow-3);
             transform: translateY(-10px);
-            box-shadow: 0 30px 60px rgba(0, 245, 255, 0.2);
         }
         
         .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            filter: drop-shadow(0 0 15px var(--neon-cyan));
+            font-size: 60px;
+            margin-bottom: 25px;
+            filter: drop-shadow(0 0 20px var(--glow-3));
         }
         
-        .feature-card h3 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.2rem;
+        .feature-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
             margin-bottom: 15px;
-            color: var(--neon-cyan);
         }
         
-        .feature-card p {
-            color: var(--text-dim);
+        .feature-desc {
+            color: var(--gray);
             font-size: 0.95rem;
+            line-height: 1.7;
         }
         
-        /* === ARTICLES === */
+        /* ═══════════════════════════════════════════
+           ARTICLES
+        ═══════════════════════════════════════════ */
         .articles {
-            padding: 100px 30px;
+            padding: 150px 20px;
+        }
+        
+        .articles-header {
+            text-align: center;
+            margin-bottom: 80px;
         }
         
         .articles-grid {
@@ -622,120 +554,109 @@
         }
         
         .article-card {
-            background: var(--bg-panel);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 0, 255, 0.2);
-            border-radius: 20px;
+            background: var(--panel);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 25px;
             overflow: hidden;
             transition: all 0.4s;
         }
         
         .article-card:hover {
-            transform: translateY(-15px) scale(1.02);
-            border-color: var(--neon-magenta);
-            box-shadow: 0 40px 80px rgba(255, 0, 255, 0.3);
+            transform: translateY(-15px);
+            border-color: var(--glow-2);
+            box-shadow: 0 40px 80px rgba(255,0,170,0.2);
         }
         
-        .article-img {
+        .article-thumb {
             height: 180px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .article-img::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, var(--neon-purple), var(--neon-magenta));
-            opacity: 0.3;
+            font-size: 70px;
+            background: linear-gradient(135deg, var(--glow-3), var(--glow-2));
         }
         
         .article-content {
-            padding: 25px;
+            padding: 30px;
         }
         
         .article-tag {
             display: inline-block;
-            background: var(--neon-magenta);
+            background: var(--glow-2);
             color: white;
-            padding: 5px 15px;
+            padding: 6px 14px;
             border-radius: 20px;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 700;
             text-transform: uppercase;
+            letter-spacing: 1px;
             margin-bottom: 15px;
         }
         
-        .article-card h3 {
-            margin-bottom: 10px;
+        .article-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            line-height: 1.4;
         }
         
-        .article-card h3 a {
+        .article-title a {
             color: white;
             text-decoration: none;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1rem;
             transition: color 0.3s;
         }
         
-        .article-card h3 a:hover {
-            color: var(--neon-cyan);
-        }
+        .article-title a:hover { color: var(--glow-1); }
         
-        .article-card > .article-content > p {
-            color: var(--text-dim);
+        .article-excerpt {
+            color: var(--gray);
             font-size: 0.9rem;
-            margin-bottom: 15px;
-        }
-        
-        .read-more {
-            color: var(--neon-cyan);
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.9rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            transition: gap 0.3s;
-        }
-        
-        .read-more:hover {
-            gap: 10px;
-        }
-        
-        /* === CTA EBOOK === */
-        .ebook-cta {
-            padding: 100px 30px;
-            text-align: center;
-            position: relative;
-            background: linear-gradient(180deg, transparent, rgba(255, 0, 255, 0.1), transparent);
-        }
-        
-        .ebook-cta h2 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.5rem;
+            line-height: 1.6;
             margin-bottom: 20px;
         }
         
-        .ebook-cta p {
-            color: var(--text-dim);
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto 30px;
+        .article-link {
+            color: var(--glow-1);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: gap 0.3s;
         }
         
-        /* === FOOTER === */
+        .article-link:hover { gap: 15px; }
+        
+        /* ═══════════════════════════════════════════
+           CTA - EBOOK
+        ═══════════════════════════════════════════ */
+        .cta-section {
+            padding: 150px 20px;
+            text-align: center;
+            background: radial-gradient(ellipse at center, rgba(255,0,170,0.15) 0%, transparent 70%);
+        }
+        
+        .cta-section h2 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            color: var(--gray);
+            font-size: 1.2rem;
+            max-width: 500px;
+            margin: 0 auto 40px;
+        }
+        
+        /* ═══════════════════════════════════════════
+           FOOTER
+        ═══════════════════════════════════════════ */
         footer {
-            background: rgba(3, 0, 20, 0.95);
-            border-top: 1px solid rgba(0, 245, 255, 0.2);
-            padding: 60px 30px 30px;
+            padding: 80px 20px 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
         }
         
         .footer-content {
@@ -744,287 +665,304 @@
             display: grid;
             grid-template-columns: 2fr 1fr 1fr;
             gap: 60px;
-            margin-bottom: 40px;
+            margin-bottom: 60px;
         }
         
         .footer-brand h3 {
-            font-family: 'Orbitron', sans-serif;
+            font-family: 'Syne', sans-serif;
             font-size: 1.5rem;
-            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-magenta));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
             margin-bottom: 15px;
         }
         
+        .footer-brand h3 span { color: var(--glow-1); }
+        
         .footer-brand p {
-            color: var(--text-dim);
-            font-size: 0.95rem;
+            color: var(--gray);
             line-height: 1.7;
         }
         
         .footer-links h4 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1rem;
-            color: var(--neon-cyan);
-            margin-bottom: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
             text-transform: uppercase;
+            color: var(--glow-1);
+            margin-bottom: 20px;
         }
         
-        .footer-links ul {
-            list-style: none;
-        }
+        .footer-links ul { list-style: none; }
         
-        .footer-links li {
-            margin-bottom: 10px;
-        }
+        .footer-links li { margin-bottom: 12px; }
         
         .footer-links a {
-            color: var(--text-dim);
+            color: var(--gray);
             text-decoration: none;
             transition: color 0.3s;
         }
         
-        .footer-links a:hover {
-            color: var(--neon-cyan);
-        }
+        .footer-links a:hover { color: var(--glow-1); }
         
         .footer-bottom {
             text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--text-dim);
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: var(--gray);
             font-size: 0.85rem;
         }
         
-        /* === RESPONSIVE === */
-        @media (max-width: 1200px) {
-            .products-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        
-        @media (max-width: 968px) {
-            .hero-content { grid-template-columns: 1fr; text-align: center; }
-            .hero-text p { margin: 0 auto 40px; }
-            .cta-buttons { justify-content: center; flex-wrap: wrap; }
-            .hero-3d { display: none; }
-            .hero-text h1 { font-size: 2.5rem; }
-            .features-grid { grid-template-columns: 1fr; }
-            .articles-grid { grid-template-columns: 1fr; }
+        /* ═══════════════════════════════════════════
+           RESPONSIVE
+        ═══════════════════════════════════════════ */
+        @media (max-width: 1024px) {
+            .features-grid, .articles-grid { grid-template-columns: 1fr; }
             .footer-content { grid-template-columns: 1fr; text-align: center; }
-            nav ul { display: none; }
         }
         
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero-cta { flex-direction: column; align-items: center; }
+            .hero-visual { display: none; }
             .products-grid { grid-template-columns: 1fr; }
-            .hero-text h1 { font-size: 1.8rem; }
-            .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
         }
     </style>
 </head>
 <body>
-    <div class="bg-animation"></div>
-    <div class="grid-overlay"></div>
-    <div class="particles">
-        <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
-        <div class="particle" style="left: 20%; animation-delay: 2s;"></div>
-        <div class="particle" style="left: 30%; animation-delay: 4s;"></div>
-        <div class="particle" style="left: 40%; animation-delay: 1s;"></div>
-        <div class="particle" style="left: 50%; animation-delay: 3s;"></div>
-        <div class="particle" style="left: 60%; animation-delay: 5s;"></div>
-        <div class="particle" style="left: 70%; animation-delay: 2.5s;"></div>
-        <div class="particle" style="left: 80%; animation-delay: 4.5s;"></div>
-        <div class="particle" style="left: 90%; animation-delay: 1.5s;"></div>
+    <!-- COSMIC BACKGROUND -->
+    <div class="cosmos"></div>
+    <div class="stars">
+        <div class="star" style="top: 10%; left: 5%; animation-delay: 0s;"></div>
+        <div class="star" style="top: 20%; left: 15%; animation-delay: 0.5s;"></div>
+        <div class="star" style="top: 5%; left: 25%; animation-delay: 1s;"></div>
+        <div class="star" style="top: 30%; left: 35%; animation-delay: 1.5s;"></div>
+        <div class="star" style="top: 15%; left: 55%; animation-delay: 0.3s;"></div>
+        <div class="star" style="top: 25%; left: 75%; animation-delay: 0.8s;"></div>
+        <div class="star" style="top: 8%; left: 85%; animation-delay: 1.2s;"></div>
+        <div class="star" style="top: 40%; left: 90%; animation-delay: 0.6s;"></div>
+        <div class="star" style="top: 50%; left: 10%; animation-delay: 1.8s;"></div>
+        <div class="star" style="top: 60%; left: 30%; animation-delay: 0.2s;"></div>
+        <div class="star" style="top: 70%; left: 60%; animation-delay: 0.9s;"></div>
+        <div class="star" style="top: 80%; left: 80%; animation-delay: 1.4s;"></div>
     </div>
+    <div class="meteor" style="top: 10%; left: 0; animation-delay: 2s;"></div>
+    <div class="meteor" style="top: 40%; left: 0; animation-delay: 6s;"></div>
     
-    <header>
-        <nav>
-            <div class="logo">CASA SMART FACILE</div>
-            <ul>
-                <li><a href="#prodotti">Prodotti</a></li>
-                <li><a href="#features">Perché</a></li>
-                <li><a href="#articoli">Guide</a></li>
-                <li><a href="#ebook">Ebook</a></li>
-            </ul>
-        </nav>
-    </header>
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="logo">Casa<span>Smart</span></div>
+        <ul class="nav-links">
+            <li><a href="#prodotti">PRODOTTI</a></li>
+            <li><a href="#perche">PERCHÉ</a></li>
+            <li><a href="#guide">GUIDE</a></li>
+            <li><a href="#ebook">EBOOK</a></li>
+        </ul>
+    </nav>
     
-    <main>
-        <section class="hero">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1>La Tua Casa<br><span class="gradient">Del Futuro</span></h1>
-                    <p>Trasforma qualsiasi abitazione in una smart home futuristica. Guide pratiche, prodotti testati, zero competenze richieste.</p>
-                    <div class="cta-buttons">
-                        <a href="#ebook" class="btn-primary">📖 Guida Gratuita</a>
-                        <a href="#prodotti" class="btn-secondary">🚀 Inizia Ora</a>
-                    </div>
-                </div>
-                <div class="hero-3d">
-                    <div class="house-container">
-                        <div class="house-base">
-                            <div class="house-face house-front">
-                                <div class="house-window window-1"></div>
-                                <div class="house-window window-2"></div>
-                                <div class="house-window window-3"></div>
-                                <div class="house-window window-4"></div>
-                            </div>
-                            <div class="house-face house-back"></div>
-                            <div class="house-face house-left"></div>
-                            <div class="house-face house-right"></div>
-                            <div class="house-roof"></div>
-                        </div>
-                        <div class="floating-icons">
-                            <span class="float-icon icon-1">📶</span>
-                            <span class="float-icon icon-2">💡</span>
-                            <span class="float-icon icon-3">🌡️</span>
-                            <span class="float-icon icon-4">🔒</span>
-                            <span class="float-icon icon-5">📱</span>
-                            <span class="float-icon icon-6">🎤</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-badge">
+            <span>🚀</span>
+            <span>NUOVA GUIDA 2026</span>
+        </div>
         
-        <section class="products" id="prodotti">
-            <div class="section-header">
-                <h2>⚡ Prodotti Consigliati</h2>
-                <p>Hardware testato — inizia subito la tua trasformazione</p>
-            </div>
-            <div class="products-grid">
-                <div class="product-card">
-                    <span class="product-badge">🏆 #1 Best</span>
-                    <div class="product-icon">🖥️</div>
-                    <h3>Raspberry Pi 5 (8GB)</h3>
-                    <p>Il cervello della tua smart home. Potenza da server, consumi minimi.</p>
-                    <div class="product-rating">★★★★★</div>
-                    <div class="product-price">€89.99</div>
-                    <a href="https://www.amazon.it/dp/B0CMV77LNV?tag=casasmartfaci-21" class="affiliate-btn" target="_blank" rel="noopener noreferrer nofollow sponsored">Vedi su Amazon →</a>
-                </div>
-                
-                <div class="product-card">
-                    <span class="product-badge">⭐ Top Pick</span>
-                    <div class="product-icon">📡</div>
-                    <h3>SONOFF Zigbee Dongle</h3>
-                    <p>Coordinatore universale Zigbee 3.0. Plug & play con Home Assistant.</p>
-                    <div class="product-rating">★★★★☆</div>
-                    <div class="product-price">€29.99</div>
-                    <a href="https://www.amazon.it/dp/B09KXTCMSC?tag=casasmartfaci-21" class="affiliate-btn" target="_blank" rel="noopener noreferrer nofollow sponsored">Vedi su Amazon →</a>
-                </div>
-                
-                <div class="product-card">
-                    <span class="product-badge">🔥 Hot</span>
-                    <div class="product-icon">💡</div>
-                    <h3>Philips Hue Kit</h3>
-                    <p>16 milioni di colori. La qualità premium per le tue luci smart.</p>
-                    <div class="product-rating">★★★★★</div>
-                    <div class="product-price">€69.99</div>
-                    <a href="https://www.amazon.it/s?k=Philips+Hue+Starter+Kit&tag=casasmartfaci-21" class="affiliate-btn" target="_blank" rel="noopener noreferrer nofollow sponsored">Vedi su Amazon →</a>
-                </div>
-                
-                <div class="product-card">
-                    <span class="product-badge">💰 Value</span>
-                    <div class="product-icon">🌡️</div>
-                    <h3>Sensore Aqara T/H</h3>
-                    <p>Temperatura e umidità. Batteria 2 anni, precisione professionale.</p>
-                    <div class="product-rating">★★★★★</div>
-                    <div class="product-price">€12.99</div>
-                    <a href="https://www.amazon.it/s?k=Aqara+sensore+temperatura+umidita+zigbee&tag=casasmartfaci-21" class="affiliate-btn" target="_blank" rel="noopener noreferrer nofollow sponsored">Vedi su Amazon →</a>
-                </div>
-            </div>
-        </section>
+        <h1>
+            <span class="line-1">CASA DEL FUTURO</span>
+            <span class="line-2">SMART HOME FAI-DA-TE</span>
+        </h1>
         
-        <section class="features" id="features">
-            <div class="section-header">
-                <h2>🔮 Perché Domotica Fai-da-Te?</h2>
-                <p>Risparmia l'80% rispetto a soluzioni professionali</p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">💰</div>
-                    <h3>Budget Minimo</h3>
-                    <p>Inizia con meno di €30. Raspberry Pi + sensori bastano per automatizzare tutta casa.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔒</div>
-                    <h3>Privacy Totale</h3>
-                    <p>I tuoi dati restano a casa tua. Niente cloud, niente aziende che ti spiano.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h3>Risparmio Energetico</h3>
-                    <p>Automatizza riscaldamento e luci. Risparmia fino al 30% sulla bolletta.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔧</div>
-                    <h3>Open Source</h3>
-                    <p>Home Assistant, Zigbee2MQTT, ESPHome — software gratuito e potentissimo.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📱</div>
-                    <h3>Controllo Totale</h3>
-                    <p>Gestisci tutto da telefono, voce o automazioni. La casa si adatta a te.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎓</div>
-                    <h3>Guide Step-by-Step</h3>
-                    <p>Tutorial pensati per principianti. Nessuna competenza tecnica richiesta.</p>
-                </div>
-            </div>
-        </section>
+        <p class="hero-desc">
+            Trasforma qualsiasi casa in una smart home futuristica. 
+            Zero competenze tecniche richieste. Budget minimo.
+        </p>
         
-        <section class="articles" id="articoli">
-            <div class="section-header">
-                <h2>📚 Guide & Tutorial</h2>
-                <p>Impara tutto sulla domotica fai-da-te</p>
-            </div>
-            <div class="articles-grid">
-                <article class="article-card">
-                    <div class="article-img" style="background: linear-gradient(135deg, #00f5ff, #7b2dff);">🏠</div>
-                    <div class="article-content">
-                        <span class="article-tag">Guida Base</span>
-                        <h3><a href="articles/home-assistant-guida-completa.html">Home Assistant: Guida Completa 2026</a></h3>
-                        <p>Installazione, configurazione e prime automazioni per principianti.</p>
-                        <a href="articles/home-assistant-guida-completa.html" class="read-more">Leggi →</a>
-                    </div>
-                </article>
-                <article class="article-card">
-                    <div class="article-img" style="background: linear-gradient(135deg, #ff00ff, #ff2a6d);">📡</div>
-                    <div class="article-content">
-                        <span class="article-tag">Hardware</span>
-                        <h3><a href="articles/migliori-dispositivi-zigbee-2026.html">Migliori Dispositivi Zigbee 2026</a></h3>
-                        <p>I migliori sensori, luci e switch Zigbee per la tua smart home.</p>
-                        <a href="articles/migliori-dispositivi-zigbee-2026.html" class="read-more">Leggi →</a>
-                    </div>
-                </article>
-                <article class="article-card">
-                    <div class="article-img" style="background: linear-gradient(135deg, #7b2dff, #00f5ff);">💡</div>
-                    <div class="article-content">
-                        <span class="article-tag">Risparmio</span>
-                        <h3><a href="articles/risparmiare-bolletta-domotica.html">Risparmia il 30% sulla Bolletta</a></h3>
-                        <p>Come la domotica taglia i costi energetici con automazioni intelligenti.</p>
-                        <a href="articles/risparmiare-bolletta-domotica.html" class="read-more">Leggi →</a>
-                    </div>
-                </article>
-            </div>
-        </section>
+        <div class="hero-cta">
+            <a href="#prodotti" class="btn btn-glow">Esplora Prodotti</a>
+            <a href="#ebook" class="btn btn-ghost">Guida Gratuita</a>
+        </div>
         
-        <section class="ebook-cta" id="ebook">
-            <h2>📖 Ebook Gratuito</h2>
-            <p>50+ pagine di guide pratiche per trasformare la tua casa. Scaricalo gratis, zero spam.</p>
-            <a href="https://casasmartfacile.gumroad.com/l/domotica-basso-costo" class="btn-primary" target="_blank">Scarica Gratis →</a>
-        </section>
-    </main>
+        <div class="hero-visual">
+            <div class="floating-house">
+                <div class="house-emoji">🏠</div>
+            </div>
+            <div class="orbit orbit-1">
+                <span class="orbit-icon">💡</span>
+                <span class="orbit-icon">🌡️</span>
+                <span class="orbit-icon">📱</span>
+                <span class="orbit-icon">🔒</span>
+            </div>
+            <div class="orbit orbit-2"></div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <span>SCORRI</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
     
+    <!-- PRODUCTS -->
+    <section class="products" id="prodotti">
+        <div class="products-header">
+            <span class="section-label">✦ HARDWARE TESTATO</span>
+            <h2 class="section-title">I Migliori Prodotti</h2>
+            <p class="section-desc">Ogni prodotto è testato personalmente. Solo il meglio per iniziare.</p>
+        </div>
+        
+        <div class="products-grid">
+            <!-- PRODOTTO 1 - Raspberry Pi 5 -->
+            <div class="product-card">
+                <span class="product-badge">🏆 BEST</span>
+                <div class="product-visual">🖥️</div>
+                <h3 class="product-name">Raspberry Pi 5 (8GB)</h3>
+                <p class="product-desc">Il cervello della tua smart home. Potenza da server professionale con consumi minimi. Perfetto per Home Assistant.</p>
+                <div class="product-meta">
+                    <span class="product-price">€89.99</span>
+                    <span class="product-rating">★★★★★</span>
+                </div>
+                <a href="https://www.amazon.it/dp/B0CMV77LNV?tag=casasmartfaci-21" class="product-btn" target="_blank" rel="noopener noreferrer nofollow sponsored">Acquista su Amazon →</a>
+            </div>
+            
+            <!-- PRODOTTO 2 - SONOFF Zigbee -->
+            <div class="product-card">
+                <span class="product-badge">⚡ TOP</span>
+                <div class="product-visual">📡</div>
+                <h3 class="product-name">SONOFF Zigbee 3.0 Dongle</h3>
+                <p class="product-desc">Coordinatore Zigbee universale. Compatibile con centinaia di dispositivi. Plug & play con Home Assistant.</p>
+                <div class="product-meta">
+                    <span class="product-price">€29.99</span>
+                    <span class="product-rating">★★★★☆</span>
+                </div>
+                <a href="https://www.amazon.it/dp/B09KXTCMSC?tag=casasmartfaci-21" class="product-btn" target="_blank" rel="noopener noreferrer nofollow sponsored">Acquista su Amazon →</a>
+            </div>
+            
+            <!-- PRODOTTO 3 - Philips Hue Bridge -->
+            <div class="product-card">
+                <span class="product-badge">🌟 PREMIUM</span>
+                <div class="product-visual">💡</div>
+                <h3 class="product-name">Philips Hue Bridge</h3>
+                <p class="product-desc">Il cuore del sistema Hue. Controlla fino a 50 luci e accessori. Integrazione perfetta con ogni piattaforma.</p>
+                <div class="product-meta">
+                    <span class="product-price">€49.99</span>
+                    <span class="product-rating">★★★★★</span>
+                </div>
+                <a href="https://www.amazon.it/dp/B09CV9F3KR?tag=casasmartfaci-21" class="product-btn" target="_blank" rel="noopener noreferrer nofollow sponsored">Acquista su Amazon →</a>
+            </div>
+            
+            <!-- PRODOTTO 4 - Aqara Sensor -->
+            <div class="product-card">
+                <span class="product-badge">💰 VALUE</span>
+                <div class="product-visual">🌡️</div>
+                <h3 class="product-name">Aqara Temp/Humidity (3 Pack)</h3>
+                <p class="product-desc">Sensori di temperatura e umidità Zigbee. Batteria 2 anni, precisione professionale. Ideale per ogni stanza.</p>
+                <div class="product-meta">
+                    <span class="product-price">€39.99</span>
+                    <span class="product-rating">★★★★★</span>
+                </div>
+                <a href="https://www.amazon.it/dp/B09WRB33KM?tag=casasmartfaci-21" class="product-btn" target="_blank" rel="noopener noreferrer nofollow sponsored">Acquista su Amazon →</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FEATURES -->
+    <section class="features" id="perche">
+        <div class="features-header">
+            <span class="section-label">✦ VANTAGGI</span>
+            <h2 class="section-title">Perché Smart Home Fai-da-Te?</h2>
+            <p class="section-desc">Risparmia l'80% rispetto alle soluzioni professionali. Controllo totale.</p>
+        </div>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">💰</div>
+                <h3 class="feature-title">Budget Minimo</h3>
+                <p class="feature-desc">Inizia con meno di €50. Non servono tecnici costosi o installazioni complesse.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3 class="feature-title">Privacy Totale</h3>
+                <p class="feature-desc">I tuoi dati restano a casa tua. Niente cloud, niente abbonamenti, niente spionaggio.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3 class="feature-title">Risparmio Energia</h3>
+                <p class="feature-desc">Automatizza riscaldamento e luci. Risparmia fino al 30% sulla bolletta ogni mese.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔧</div>
+                <h3 class="feature-title">100% Open Source</h3>
+                <p class="feature-desc">Home Assistant, Zigbee2MQTT, ESPHome — software gratuito e community mondiale.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <h3 class="feature-title">Controllo Ovunque</h3>
+                <p class="feature-desc">Gestisci la casa da smartphone, voce o automazioni intelligenti. Da ovunque nel mondo.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎓</div>
+                <h3 class="feature-title">Guide Step-by-Step</h3>
+                <p class="feature-desc">Tutorial pensati per principianti assoluti. Nessuna competenza tecnica richiesta.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ARTICLES -->
+    <section class="articles" id="guide">
+        <div class="articles-header">
+            <span class="section-label">✦ GUIDE & TUTORIAL</span>
+            <h2 class="section-title">Impara Tutto</h2>
+            <p class="section-desc">Guide pratiche per ogni livello di esperienza.</p>
+        </div>
+        
+        <div class="articles-grid">
+            <article class="article-card">
+                <div class="article-thumb">🏠</div>
+                <div class="article-content">
+                    <span class="article-tag">Guida Base</span>
+                    <h3 class="article-title"><a href="articles/home-assistant-guida-completa.html">Home Assistant: Guida Completa 2026</a></h3>
+                    <p class="article-excerpt">Installazione, configurazione e prime automazioni per principianti assoluti.</p>
+                    <a href="articles/home-assistant-guida-completa.html" class="article-link">Leggi la guida →</a>
+                </div>
+            </article>
+            
+            <article class="article-card">
+                <div class="article-thumb">📡</div>
+                <div class="article-content">
+                    <span class="article-tag">Hardware</span>
+                    <h3 class="article-title"><a href="articles/migliori-dispositivi-zigbee-2026.html">Migliori Dispositivi Zigbee 2026</a></h3>
+                    <p class="article-excerpt">I migliori sensori, luci e switch Zigbee per la tua smart home.</p>
+                    <a href="articles/migliori-dispositivi-zigbee-2026.html" class="article-link">Leggi la guida →</a>
+                </div>
+            </article>
+            
+            <article class="article-card">
+                <div class="article-thumb">💡</div>
+                <div class="article-content">
+                    <span class="article-tag">Risparmio</span>
+                    <h3 class="article-title"><a href="articles/risparmiare-bolletta-domotica.html">Risparmia il 30% sulla Bolletta</a></h3>
+                    <p class="article-excerpt">Come la domotica taglia i costi energetici con automazioni intelligenti.</p>
+                    <a href="articles/risparmiare-bolletta-domotica.html" class="article-link">Leggi la guida →</a>
+                </div>
+            </article>
+        </div>
+    </section>
+    
+    <!-- CTA EBOOK -->
+    <section class="cta-section" id="ebook">
+        <span class="section-label">✦ RISORSA GRATUITA</span>
+        <h2>Ebook Gratuito: "Domotica a Basso Costo"</h2>
+        <p>50+ pagine di guide pratiche per trasformare la tua casa. Scaricalo gratis, zero spam.</p>
+        <a href="https://casasmartfacile.gumroad.com/l/domotica-basso-costo" class="btn btn-glow" target="_blank">Scarica Gratis →</a>
+    </section>
+    
+    <!-- FOOTER -->
     <footer>
         <div class="footer-content">
             <div class="footer-brand">
-                <h3>CASA SMART FACILE</h3>
+                <h3>Casa<span>Smart</span></h3>
                 <p>La guida definitiva alla domotica fai-da-te in italiano. Trasforma la tua casa senza spendere una fortuna.</p>
             </div>
             <div class="footer-links">
                 <h4>Risorse</h4>
                 <ul>
-                    <li><a href="#articoli">Guide</a></li>
+                    <li><a href="#guide">Guide</a></li>
                     <li><a href="#prodotti">Prodotti</a></li>
                     <li><a href="#ebook">Ebook</a></li>
                 </ul>
@@ -1039,7 +977,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2026 CasaSmartFacile — Sito con link affiliati Amazon. Acquistando ci aiuti a creare nuovi contenuti.</p>
+            <p>© 2026 CasaSmartFacile — Contiene link affiliati Amazon. Acquistando ci aiuti a creare nuovi contenuti, senza costi aggiuntivi per te.</p>
         </div>
     </footer>
 </body>
