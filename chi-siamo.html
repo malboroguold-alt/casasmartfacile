@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi Siamo | CasaSmartFacile</title>
+    <meta name="description" content="Scopri chi c'è dietro CasaSmartFacile: la nostra missione, i valori e perché crediamo nella domotica fai-da-te accessibile a tutti.">
+    <link rel="canonical" href="https://casasmartfacile.github.io/chi-siamo.html">
+    
+    <!-- Favicon SVG -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 60'%3E%3Cpath d='M 15 30 L 15 50 L 45 50 L 45 30 Z' fill='%231a1a2e' stroke='%23e94560' stroke-width='2'/%3E%3Cpath d='M 10 30 L 30 10 L 50 30 Z' fill='%23e94560'/%3E%3Crect x='22' y='37' width='8' height='13' fill='%23e94560'/%3E%3Crect x='32' y='35' width='8' height='8' fill='%23fff' opacity='0.7'/%3E%3C/svg%3E">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Chi Siamo | CasaSmartFacile">
+    <meta property="og:description" content="La nostra missione è rendere la domotica accessibile a tutti, con guide pratiche e soluzioni a basso costo.">
+    <meta property="og:url" content="https://casasmartfacile.github.io/chi-siamo.html">
+    <meta property="og:image" content="https://casasmartfacile.github.io/assets/og-image.jpg">
+    <meta property="og:locale" content="it_IT">
+    <meta property="og:site_name" content="CasaSmartFacile">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; line-height: 1.6; color: #333; background: #f8f9fa; }
+        
+        /* Header */
+        header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); color: white; padding: 0; }
+        nav { max-width: 1200px; margin: 0 auto; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
+        .logo img { height: 50px; width: auto; }
+        nav ul { list-style: none; display: flex; gap: 25px; }
+        nav a { color: white; text-decoration: none; font-size: 0.95rem; opacity: 0.85; transition: opacity 0.3s; }
+        nav a:hover { opacity: 1; }
+        
+        /* Page Header */
+        .page-header { max-width: 1200px; margin: 0 auto; padding: 80px 20px; text-align: center; }
+        .page-header h1 { font-size: 2.8rem; margin-bottom: 20px; }
+        .page-header h1 span { color: #e94560; }
+        .page-header p { font-size: 1.2rem; opacity: 0.9; max-width: 700px; margin: 0 auto; }
+        
+        /* Content */
+        .content { max-width: 800px; margin: 0 auto; padding: 60px 20px; background: white; margin-top: -30px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
+        .content h2 { color: #1a1a2e; font-size: 1.8rem; margin: 40px 0 15px; padding-top: 30px; border-top: 2px solid #f0f0f0; }
+        .content h2:first-child { border-top: none; padding-top: 0; margin-top: 0; }
+        .content h3 { color: #0f3460; font-size: 1.3rem; margin: 25px 0 10px; }
+        .content p { margin-bottom: 20px; font-size: 1.05rem; line-height: 1.8; }
+        .content ul { margin: 15px 0 20px 30px; }
+        .content li { margin-bottom: 12px; font-size: 1.05rem; }
+        
+        .highlight-box { background: linear-gradient(135deg, rgba(233,69,96,0.1), rgba(102,126,234,0.1)); padding: 30px; border-radius: 12px; margin: 30px 0; border-left: 4px solid #e94560; }
+        .highlight-box h3 { margin-top: 0; color: #e94560; }
+        
+        .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; margin: 30px 0; }
+        .value-card { background: #f8f9fa; padding: 25px; border-radius: 12px; }
+        .value-card .icon { font-size: 2.5rem; margin-bottom: 15px; }
+        .value-card h3 { color: #1a1a2e; margin-bottom: 10px; }
+        .value-card p { font-size: 0.95rem; line-height: 1.7; }
+        
+        /* Footer */
+        footer { background: #1a1a2e; color: white; padding: 60px 20px 30px; margin-top: 80px; }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+        .footer-about h3 { color: #e94560; margin-bottom: 15px; }
+        .footer-about p { opacity: 0.8; font-size: 0.9rem; line-height: 1.7; }
+        .footer-links h4 { margin-bottom: 15px; font-size: 1.1rem; }
+        .footer-links ul { list-style: none; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a { color: white; text-decoration: none; opacity: 0.7; font-size: 0.9rem; transition: opacity 0.3s; }
+        .footer-links a:hover { opacity: 1; }
+        .footer-social { display: flex; gap: 15px; margin-top: 15px; }
+        .footer-social a { color: white; font-size: 1.5rem; opacity: 0.7; transition: opacity 0.3s; }
+        .footer-social a:hover { opacity: 1; }
+        .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); }
+        .footer-bottom p { opacity: 0.7; font-size: 0.85rem; margin-bottom: 10px; }
+        .footer-bottom a { color: #e94560; text-decoration: none; }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 1.8rem; }
+            nav ul { display: none; }
+            .footer-content { grid-template-columns: 1fr; gap: 30px; }
+            .values-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/logo.svg" alt="CasaSmartFacile Logo">
+                </a>
+            </div>
+            <ul>
+                <li><a href="index.html#guide">Guide</a></li>
+                <li><a href="index.html#articoli">Articoli</a></li>
+                <li><a href="index.html#prodotti">Prodotti</a></li>
+                <li><a href="index.html#ebook">Ebook Gratis</a></li>
+            </ul>
+        </nav>
+        <div class="page-header">
+            <h1>Chi <span>Siamo</span></h1>
+            <p>La domotica non deve essere complicata, costosa o riservata a pochi. Crediamo che chiunque possa trasformare la propria casa in una smart home.</p>
+        </div>
+    </header>
+
+    <div class="content">
+        <h2>La Nostra Missione</h2>
+        <p>CasaSmartFacile è nato da una semplice osservazione: <strong>la domotica è incredibilmente potente, ma spesso percepita come inaccessibile</strong>. Installazioni professionali da migliaia di euro, configurazioni complesse, dispositivi costosi che funzionano solo con ecosistemi chiusi.</p>
+        
+        <p>Noi pensiamo che si possa fare diversamente. Con un Raspberry Pi da 90€, qualche sensore economico e le giuste guide, <strong>chiunque può automatizzare la propria casa</strong> — risparmiando energia, aumentando la sicurezza e migliorando il comfort quotidiano.</p>
+
+        <div class="highlight-box">
+            <h3>🎯 Il nostro obiettivo</h3>
+            <p>Rendere la domotica fai-da-te <strong>accessibile, comprensibile e alla portata di tutti</strong>, attraverso guide pratiche, recensioni oneste e una community che condivide esperienze reali.</p>
+        </div>
+
+        <h2>I Nostri Valori</h2>
+        <div class="values-grid">
+            <div class="value-card">
+                <div class="icon">🔒</div>
+                <h3>Privacy First</h3>
+                <p>Crediamo nel controllo locale. I tuoi dati devono restare a casa tua, non nei server di multinazionali. Per questo promuoviamo soluzioni come Home Assistant.</p>
+            </div>
+            <div class="value-card">
+                <div class="icon">💰</div>
+                <h3>Budget Accessibile</h3>
+                <p>La domotica non deve costare una fortuna. Con meno di 100€ puoi iniziare — il resto si aggiunge passo dopo passo, secondo le tue esigenze.</p>
+            </div>
+            <div class="value-card">
+                <div class="icon">🏗️</div>
+                <h3>Open Source</h3>
+                <p>Supportiamo progetti open source: Home Assistant, Zigbee2MQTT, ESPHome. Software libero, community attive, nessun lock-in.</p>
+            </div>
+            <div class="value-card">
+                <div class="icon">📚</div>
+                <h3>Educazione</h3>
+                <p>Non vendiamo solo prodotti. Spieghiamo <em>come funzionano</em>, <em>perché sceglierli</em> e <em>come configurarli</em>. Vogliamo che tu capisca cosa stai facendo.</p>
+            </div>
+            <div class="value-card">
+                <div class="icon">🌱</div>
+                <h3>Sostenibilità</h3>
+                <p>Automazioni intelligenti riducono sprechi energetici. Una casa smart può farti risparmiare fino al 30% sulla bolletta — bene per te, bene per il pianeta.</p>
+            </div>
+            <div class="value-card">
+                <div class="icon">🤝</div>
+                <h3>Onestà</h3>
+                <p>Recensioni senza filtri, pro e contro chiari, link affiliati trasparenti. Se un prodotto non funziona bene, lo diciamo.</p>
+            </div>
+        </div>
+
+        <h2>Perché Fidati di Noi?</h2>
+        <p>Ogni guida, tutorial e recensione che pubblichiamo è basata su <strong>esperienza diretta</strong>. Testiamo i prodotti, configuriamo i sistemi, sperimentiamo le automazioni — e condividiamo quello che funziona davvero.</p>
+        
+        <ul>
+            <li>✅ <strong>Nessun contenuto sponsorizzato</strong> — solo prodotti che consigliamo davvero</li>
+            <li>✅ <strong>Guide passo-passo</strong> — pensate per chi parte da zero</li>
+            <li>✅ <strong>Tutorial aggiornati</strong> — verificati regolarmente con le ultime versioni software</li>
+            <li>✅ <strong>Community attiva</strong> — rispondiamo alle domande, condividiamo esperienze</li>
+        </ul>
+
+        <h2>Cosa Troverai su CasaSmartFacile</h2>
+        <p>Il nostro sito è strutturato per accompagnarti in ogni fase del tuo percorso nella domotica:</p>
+        
+        <h3>📖 Guide Complete</h3>
+        <p>Tutorial approfonditi su Home Assistant, Zigbee, automazioni avanzate, configurazioni complesse. Tutto spiegato passo-passo, con screenshot e codice pronto all'uso.</p>
+        
+        <h3>🛒 Recensioni Prodotti</h3>
+        <p>Test completi di dispositivi smart: sensori, luci, prese, coordinatori, hub. Confronti tra brand, pro e contro, suggerimenti per ogni budget.</p>
+        
+        <h3>💡 Idee e Automazioni</h3>
+        <p>Esempi pratici di automazioni per ogni situazione: risparmio energetico, sicurezza, comfort, notifiche intelligenti. Copia-incolla e adatta alla tua casa.</p>
+        
+        <h3>🆓 Risorse Gratuite</h3>
+        <p>Ebook, checklist, schemi di configurazione, template pronti. Tutto gratuito, sempre.</p>
+
+        <h2>Parliamone!</h2>
+        <p>CasaSmartFacile è anche una community. Hai domande? Vuoi condividere la tua configurazione? Hai trovato un prodotto interessante?</p>
+        
+        <p><strong>Scrivici!</strong> Siamo su Twitter, Facebook, Instagram e YouTube. Oppure inviaci una mail — rispondiamo sempre.</p>
+        
+        <p style="margin-top: 40px; text-align: center; font-size: 1.2rem;">
+            <strong>Benvenuto nella community di CasaSmartFacile 🏠✨</strong>
+        </p>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-about">
+                <h3>CasaSmartFacile</h3>
+                <p>La tua guida completa alla domotica fai-da-te. Tutorial pratici, recensioni oneste e consigli per trasformare qualsiasi casa in una smart home, anche con budget limitato. Crediamo nella privacy, nell'open source e nel controllo totale della tua casa.</p>
+                <div class="footer-social">
+                    <a href="https://twitter.com/casasmartfacile" title="Twitter">🐦</a>
+                    <a href="https://facebook.com/casasmartfacile" title="Facebook">📘</a>
+                    <a href="https://instagram.com/casasmartfacile" title="Instagram">📷</a>
+                    <a href="https://youtube.com/@casasmartfacile" title="YouTube">📺</a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Risorse</h4>
+                <ul>
+                    <li><a href="index.html#guide">Guide</a></li>
+                    <li><a href="index.html#articoli">Articoli</a></li>
+                    <li><a href="index.html#prodotti">Prodotti Consigliati</a></li>
+                    <li><a href="index.html#ebook">Ebook Gratuito</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Informazioni</h4>
+                <ul>
+                    <li><a href="chi-siamo.html">Chi Siamo</a></li>
+                    <li><a href="#contatti">Contatti</a></li>
+                    <li><a href="#privacy">Privacy Policy</a></li>
+                    <li><a href="#cookie">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 CasaSmartFacile.it — Guida alla Domotica Fai-da-Te</p>
+            <p>Questo sito contiene link affiliati. Acquistando tramite questi link ci aiuti a creare nuovi contenuti, senza costi aggiuntivi per te.</p>
+        </div>
+    </footer>
+</body>
+</html>

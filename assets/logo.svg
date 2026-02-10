@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" width="320" height="80">
+  <!-- Casa stilizzata -->
+  <g>
+    <!-- Base casa -->
+    <path d="M 15 45 L 15 65 L 45 65 L 45 45 Z" fill="#1a1a2e" stroke="#e94560" stroke-width="2"/>
+    <!-- Tetto -->
+    <path d="M 10 45 L 30 25 L 50 45 Z" fill="#e94560"/>
+    <!-- Porta -->
+    <rect x="22" y="52" width="8" height="13" fill="#e94560"/>
+    <!-- Finestra -->
+    <rect x="32" y="50" width="8" height="8" fill="#fff" opacity="0.7"/>
+    <!-- Icona WiFi sulla casa -->
+    <path d="M 25 38 Q 30 33 35 38" stroke="#fff" stroke-width="1.5" fill="none" opacity="0.8"/>
+    <path d="M 27 40 Q 30 37 33 40" stroke="#fff" stroke-width="1.5" fill="none" opacity="0.8"/>
+    <circle cx="30" cy="42" r="1" fill="#fff" opacity="0.8"/>
+  </g>
+  
+  <!-- Testo CasaSmartFacile -->
+  <text x="60" y="50" font-family="'Segoe UI', system-ui, sans-serif" font-size="28" font-weight="700" fill="#1a1a2e">
+    Casa<tspan fill="#e94560">Smart</tspan>Facile
+  </text>
+</svg>
