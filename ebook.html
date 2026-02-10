@@ -3,37 +3,560 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ebook Gratuito: Domotica a Basso Costo</title>
+    <title>📖 Domotica a Basso Costo - Ebook Gratuito</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: system-ui, sans-serif; line-height: 1.7; background: #f5f5f5; color: #333; }
-        .container { max-width: 800px; margin: 0 auto; padding: 60px 20px; background: white; min-height: 100vh; }
-        h1 { font-size: 2.5rem; margin-bottom: 20px; color: #1a1a2e; }
-        h2 { font-size: 1.8rem; margin: 40px 0 20px; color: #e94560; border-bottom: 2px solid #e94560; padding-bottom: 10px; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.8; color: #333; background: #f8f9fa; }
+        .container { max-width: 800px; margin: 0 auto; background: white; padding: 40px; box-shadow: 0 0 20px rgba(0,0,0,0.1); }
+        h1 { color: #1a1a2e; font-size: 2.5rem; margin-bottom: 10px; border-bottom: 3px solid #e94560; padding-bottom: 20px; }
+        h2 { color: #e94560; font-size: 1.8rem; margin: 40px 0 20px; border-left: 4px solid #e94560; padding-left: 15px; }
+        h3 { color: #16213e; font-size: 1.4rem; margin: 30px 0 15px; }
         p { margin-bottom: 15px; }
-        .btn { display: inline-block; background: #e94560; color: white; padding: 15px 40px; border-radius: 50px; text-decoration: none; font-weight: 600; margin: 30px 0; }
-        .btn:hover { background: #d63651; }
+        ul, ol { margin: 20px 0; padding-left: 30px; }
+        li { margin-bottom: 10px; }
+        code { background: #f4f4f4; padding: 2px 8px; border-radius: 4px; font-family: 'Courier New', monospace; font-size: 0.9em; }
+        pre { background: #1a1a2e; color: #00d4ff; padding: 20px; border-radius: 10px; overflow-x: auto; margin: 20px 0; font-size: 0.9em; line-height: 1.5; }
+        blockquote { border-left: 4px solid #e94560; padding-left: 20px; margin: 20px 0; color: #666; font-style: italic; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background: #1a1a2e; color: white; }
+        tr:hover { background: #f5f5f5; }
+        .hero { text-align: center; padding: 60px 20px; background: linear-gradient(135deg, #1a1a2e, #16213e); color: white; margin: -40px -40px 40px -40px; }
+        .hero h1 { color: white; border-bottom: none; }
+        .hero p { font-size: 1.2rem; opacity: 0.9; }
+        .download-btn { display: inline-block; background: #e94560; color: white; padding: 15px 40px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 1.1rem; margin: 20px 0; transition: all 0.3s; }
+        .download-btn:hover { background: #d63651; transform: translateY(-2px); }
+        .toc { background: #f8f9fa; padding: 30px; border-radius: 10px; margin: 30px 0; }
+        .toc h3 { margin-top: 0; }
+        .toc a { color: #e94560; text-decoration: none; }
+        .toc a:hover { text-decoration: underline; }
+        .tip { background: #e8f5e9; border-left: 4px solid #4caf50; padding: 15px 20px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+        .tip::before { content: "💡 "; font-weight: bold; }
+        .warning { background: #fff3e0; border-left: 4px solid #ff9800; padding: 15px 20px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+        .warning::before { content: "⚠️ "; font-weight: bold; }
+        .back-link { display: inline-block; margin-bottom: 20px; color: #e94560; text-decoration: none; }
+        .back-link:hover { text-decoration: underline; }
+        @media print {
+            .hero { background: white !important; color: black !important; }
+            .hero h1 { color: black !important; }
+            .download-btn, .back-link { display: none; }
+        }
+        @media (max-width: 600px) {
+            .container { padding: 20px; }
+            .hero { margin: -20px -20px 20px -20px; padding: 40px 20px; }
+            h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.4rem; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>📖 Ebook Gratuito: Domotica a Basso Costo</h1>
-        <p><strong>La guida definitiva per trasformare la tua casa in una smart home.</strong></p>
+        <a href="index.html" class="back-link">← Torna al sito</a>
         
-        <h2>Cosa Imparerai</h2>
+        <div class="hero">
+            <h1>🏠 Domotica a Basso Costo</h1>
+            <p>La Guida Definitiva per Trasformare la Tua Casa in una Smart Home</p>
+            <p style="font-size: 0.9rem; opacity: 0.8;">CasaSmartFacile.it — Edizione 2026 — Versione 1.0</p>
+            <a href="#" onclick="window.print(); return false;" class="download-btn">🖨️ Stampa / Salva come PDF</a>
+        </div>
+        
+        <div class="toc">
+            <h3>📋 Indice</h3>
+            <ol>
+                <li><a href="#intro">Introduzione</a></li>
+                <li><a href="#perche">Perché la Domotica Fai-da-Te</a></li>
+                <li><a href="#lista">Cosa Ti Serve: La Lista Completa</a></li>
+                <li><a href="#installazione">Home Assistant: Installazione Step-by-Step</a></li>
+                <li><a href="#protocolli">I Protocolli: WiFi vs Zigbee vs Matter</a></li>
+                <li><a href="#progetto1">Progetto 1: Luci Intelligenti (Budget: 30€)</a></li>
+                <li><a href="#progetto2">Progetto 2: Sicurezza Fai-da-Te (Budget: 40€)</a></li>
+                <li><a href="#progetto3">Progetto 3: Climatizzazione Smart (Budget: 50€)</a></li>
+                <li><a href="#progetto4">Progetto 4: Risparmio Energetico (Budget: 20€)</a></li>
+                <li><a href="#progetto5">Progetto 5: Casa Completa (Budget: 100€)</a></li>
+                <li><a href="#automazioni">Automazioni Avanzate</a></li>
+                <li><a href="#problemi">Risoluzione Problemi</a></li>
+                <li><a href="#risorse">Risorse e Community</a></li>
+                <li><a href="#prodotti">Lista Prodotti Consigliati</a></li>
+            </ol>
+        </div>
+
+        <h2 id="intro">1. Introduzione</h2>
+        
+        <p>Benvenuto! Se stai leggendo questa guida è perché vuoi rendere la tua casa più intelligente, comoda e efficiente — senza spendere migliaia di euro.</p>
+        
+        <p><strong>La buona notizia? È assolutamente possibile.</strong> Con meno di 100€ puoi automatizzare luci, riscaldamento, sicurezza e molto altro. E la cosa migliore? Puoi farlo da solo, senza essere un ingegnere o un programmatore.</p>
+        
+        <h3>Questa guida è pensata per chi:</h3>
         <ul>
-            <li>Installare Home Assistant da zero</li>
-            <li>Scegliere i migliori dispositivi (WiFi, Zigbee, Matter)</li>
-            <li>Creare 5 progetti pratici con budget 20-100€</li>
-            <li>Risparmiare fino al 30% sulla bolletta</li>
-            <li>Automazioni intelligenti passo-passo</li>
+            <li>Non ha mai fatto nulla di domotica</li>
+            <li>Vuole risparmiare in bolletta</li>
+            <li>Vuole una casa più comoda e sicura</li>
+            <li>Ha un budget limitato (o nullo!)</li>
+            <li>Preferisce soluzioni che rispettano la privacy</li>
         </ul>
         
-        <h2>Scarica Gratis</h2>
-        <p>Clicca qui sotto per scaricare l'ebook in formato PDF (50+ pagine):</p>
-        <a href="https://malboroguold-alt.github.io/casasmartfacile/" class="btn">Scarica PDF Gratis →</a>
+        <h3>Cosa imparerai</h3>
         
-        <p><em>Nessuna registrazione richiesta. Zero spam.</em></p>
+        <p>Alla fine di questa guida sarai in grado di:</p>
+        <ul>
+            <li>✅ Installare e configurare Home Assistant</li>
+            <li>✅ Collegare dispositivi smart di qualsiasi marca</li>
+            <li>✅ Creare automazioni intelligenti</li>
+            <li>✅ Risparmiare fino al 30% sulla bolletta</li>
+            <li>✅ Monitorare la sicurezza della tua casa</li>
+            <li>✅ Controllare tutto dal telefono o con la voce</li>
+        </ul>
+
+        <h2 id="perche">2. Perché la Domotica Fai-da-Te</h2>
+        
+        <h3>Il problema delle soluzioni commerciali</h3>
+        
+        <p>Le soluzioni "pronte" come Google Home o Amazon Echo sono semplici ma hanno limiti enormi:</p>
+        
+        <ul>
+            <li><strong>Dipendenza dal cloud</strong> — se internet va giù, la tua casa smette di funzionare</li>
+            <li><strong>Privacy zero</strong> — ogni comando vocale viene registrato e analizzato</li>
+            <li><strong>Ecosistemi chiusi</strong> — sei bloccato con un brand</li>
+            <li><strong>Costi nascosti</strong> — abbonamenti mensili, dispositivi proprietari costosi</li>
+            <li><strong>Funzionalità limitate</strong> — automazioni basilari, niente personalizzazione</li>
+        </ul>
+        
+        <h3>La soluzione: Home Assistant</h3>
+        
+        <p>Home Assistant risolve tutti questi problemi:</p>
+        
+        <table>
+            <tr>
+                <th>Caratteristica</th>
+                <th>Google/Amazon</th>
+                <th>Home Assistant</th>
+            </tr>
+            <tr>
+                <td>Funziona offline</td>
+                <td>❌</td>
+                <td>✅</td>
+            </tr>
+            <tr>
+                <td>Privacy</td>
+                <td>❌ Cloud</td>
+                <td>✅ Locale</td>
+            </tr>
+            <tr>
+                <td>Compatibilità</td>
+                <td>Limitata</td>
+                <td>2000+ integrazioni</td>
+            </tr>
+            <tr>
+                <td>Automazioni</td>
+                <td>Base</td>
+                <td>Illimitate</td>
+            </tr>
+            <tr>
+                <td>Costo mensile</td>
+                <td>Variabile</td>
+                <td>€0</td>
+            </tr>
+            <tr>
+                <td>Personalizzazione</td>
+                <td>Minima</td>
+                <td>Totale</td>
+            </tr>
+        </table>
+
+        <h2 id="lista">3. Cosa Ti Serve: La Lista Completa</h2>
+        
+        <h3>Budget Minimo: ~90€</h3>
+        
+        <table>
+            <tr><th>Componente</th><th>Prodotto</th><th>Prezzo</th></tr>
+            <tr><td>Computer</td><td>Raspberry Pi 5 (4GB)</td><td>€89.99</td></tr>
+            <tr><td>Storage</td><td>MicroSD 32GB A2</td><td>€12.99</td></tr>
+            <tr><td>Alimentatore</td><td>USB-C 5V/3A ufficiale</td><td>€12.99</td></tr>
+            <tr><td><strong>Totale</strong></td><td></td><td><strong>~€115</strong></td></tr>
+        </table>
+        
+        <h3>Budget Consigliato: ~150€</h3>
+        
+        <p>Aggiungi un dongle Zigbee e qualche sensore:</p>
+        
+        <table>
+            <tr><th>Componente</th><th>Prodotto</th><th>Prezzo</th></tr>
+            <tr><td>Setup base</td><td>Come sopra</td><td>€115</td></tr>
+            <tr><td>Zigbee</td><td>SONOFF Dongle Plus-E</td><td>€29.99</td></tr>
+            <tr><td>Sensore</td><td>Aqara Temperatura</td><td>€12.99</td></tr>
+            <tr><td>Sensore</td><td>Aqara Porta/Finestra</td><td>€8.99</td></tr>
+            <tr><td><strong>Totale</strong></td><td></td><td><strong>~€167</strong></td></tr>
+        </table>
+        
+        <h3>Budget Zero: Usa quello che hai!</h3>
+        
+        <ul>
+            <li><strong>Vecchio PC/Laptop</strong> → Installa Home Assistant OS</li>
+            <li><strong>NAS Synology/QNAP</strong> → Home Assistant in Docker</li>
+            <li><strong>Mini PC usato</strong> → Perfetto e potente (cerca su eBay/Subito)</li>
+        </ul>
+
+        <h2 id="installazione">4. Home Assistant: Installazione Step-by-Step</h2>
+        
+        <h3>Metodo 1: Raspberry Pi (Consigliato per principianti)</h3>
+        
+        <p><strong>Tempo necessario: 15 minuti</strong></p>
+        
+        <h4>Passo 1: Prepara la MicroSD</h4>
+        <ol>
+            <li>Scarica <strong>Raspberry Pi Imager</strong> da raspberrypi.com/software</li>
+            <li>Inserisci la MicroSD nel PC</li>
+            <li>Apri Imager → Choose OS → Other specific-purpose OS → Home Assistant</li>
+            <li>Seleziona il tuo modello di Raspberry Pi</li>
+            <li>Clicca Write e attendi</li>
+        </ol>
+        
+        <h4>Passo 2: Primo Avvio</h4>
+        <ol>
+            <li>Inserisci la MicroSD nel Raspberry Pi</li>
+            <li>Collega il cavo Ethernet al router</li>
+            <li>Collega l'alimentatore</li>
+            <li>Attendi 10-20 minuti (il primo avvio è lento!)</li>
+        </ol>
+        
+        <h4>Passo 3: Accedi</h4>
+        <ol>
+            <li>Apri il browser sul PC/telefono</li>
+            <li>Vai su <code>http://homeassistant.local:8123</code></li>
+            <li>Segui la procedura guidata</li>
+            <li>Crea il tuo account</li>
+        </ol>
+        
+        <div class="tip">
+            <strong>Suggerimento:</strong> Se <code>homeassistant.local</code> non funziona, trova l'IP del Raspberry Pi nel pannello del tuo router (di solito 192.168.1.xxx)
+        </div>
+        
+        <h3>Metodo 2: Docker (Per utenti esperti)</h3>
+        
+        <pre>docker run -d \
+  --name homeassistant \
+  --privileged \
+  --restart=unless-stopped \
+  -e TZ=Europe/Rome \
+  -v /opt/homeassistant:/config \
+  -v /run/dbus:/run/dbus:ro \
+  --network=host \
+  ghcr.io/home-assistant/home-assistant:stable</pre>
+
+        <h2 id="protocolli">5. I Protocolli: WiFi vs Zigbee vs Matter</h2>
+        
+        <h3>WiFi</h3>
+        <ul>
+            <li>✅ Facile da configurare</li>
+            <li>✅ Non serve hardware aggiuntivo</li>
+            <li>❌ Consuma più batteria</li>
+            <li>❌ Sovraccarica il router con molti dispositivi</li>
+        </ul>
+        <p><strong>Ideale per:</strong> Prese smart, telecamere, elettrodomestici</p>
+        
+        <h3>Zigbee ⭐ Consigliato</h3>
+        
+        <ul>
+            <li>✅ Batteria che dura anni</li>
+            <li>✅ Rete mesh (i dispositivi si rinforzano tra loro)</li>
+            <li>✅ Funziona senza internet</li>
+            <li>✅ Dispositivi economicissimi</li>
+            <li>❌ Serve un dongle coordinatore (~30€)</li>
+        </ul>
+        <p><strong>Ideale per:</strong> Sensori, lampadine, pulsanti, termostati</p>
+        
+        <h3>Matter (Nuovo)</h3>
+        
+        <ul>
+            <li>✅ Standard universale</li>
+            <li>✅ Supportato da Apple, Google, Amazon</li>
+            <li>✅ Interoperabilità garantita</li>
+            <li>❌ Ancora pochi dispositivi disponibili</li>
+            <li>❌ Prezzi più alti</li>
+        </ul>
+        <p><strong>Ideale per:</strong> Chi vuole compatibilità futura</p>
+
+        <h2 id="progetto1">6. Progetto 1: Luci Intelligenti (Budget: 30€)</h2>
+        
+        <p><strong>Tempo: 30 minuti | Difficoltà: ⭐</strong></p>
+        
+        <h3>Cosa realizzerai</h3>
+        <ul>
+            <li>Luci che si accendono automaticamente al tramonto</li>
+            <li>Controllo da telefono</li>
+            <li>Scenari personalizzati (relax, lettura, film)</li>
+        </ul>
+        
+        <h3>Lista della spesa</h3>
+        
+        <table>
+            <tr><th>Prodotto</th><th>Prezzo</th></tr>
+            <tr><td>2x Lampadina Zigbee IKEA TRÅDFRI</td><td>€10 cad.</td></tr>
+            <tr><td>1x Telecomando IKEA STYRBAR</td><td>€10</td></tr>
+            <tr><td><strong>Totale</strong></td><td><strong>~€30</strong></td></tr>
+        </table>
+        
+        <h3>Come fare</h3>
+        <p>1. <strong>Aggiungi le lampadine a Zigbee2MQTT</strong> (o ZHA)</p>
+        <ul>
+            <li>Metti la lampadina in modalità pairing (6x on/off rapidi)</li>
+            <li>In Home Assistant: Impostazioni → Dispositivi → Aggiungi</li>
+        </ul>
+        <p>2. <strong>Crea lo scenario "Relax"</strong></p>
+        <ul><li>Luci al 40%, colore caldo (2700K)</li></ul>
+        
+        <p>3. <strong>Automazione tramonto</strong></p>
+        
+        <pre>trigger:
+  - platform: sun
+    event: sunset
+    offset: "-00:15:00"
+action:
+  - service: scene.turn_on
+    target:
+      entity_id: scene.relax</pre>
+
+        <h2 id="progetto2">7. Progetto 2: Sicurezza Fai-da-Te (Budget: 40€)</h2>
+        
+        <p><strong>Tempo: 45 minuti | Difficoltà: ⭐⭐</strong></p>
+        
+        <h3>Cosa realizzerai</h3>
+        <ul>
+            <li>Notifica quando si apre una porta/finestra</li>
+            <li>Modalità "Fuori Casa" con allarme</li>
+            <li>Storico degli eventi</li>
+        </ul>
+        
+        <h3>Lista della spesa</h3>
+        
+        <table>
+            <tr><th>Prodotto</th><th>Prezzo</th></tr>
+            <tr><td>2x Sensore porta Aqara MCCGQ11LM</td><td>€8 cad.</td></tr>
+            <tr><td>1x Sensore movimento Aqara RTCGQ11LM</td><td>€15</td></tr>
+            <tr><td>1x Sirena Zigbee (opzionale)</td><td>€15</td></tr>
+            <tr><td><strong>Totale</strong></td><td><strong>~€40-55</strong></td></tr>
+        </table>
+        
+        <h3>Automazione: Allarme porta</h3>
+        
+        <pre>alias: "Allarme Porta Ingresso"
+trigger:
+  - platform: state
+    entity_id: binary_sensor.porta_ingresso
+    to: "on"
+condition:
+  - condition: state
+    entity_id: input_boolean.modalita_allarme
+    state: "on"
+action:
+  - service: notify.mobile_app_telefono
+    data:
+      title: "🚨 ALLARME!"
+      message: "Porta d'ingresso aperta!"
+  - service: siren.turn_on
+    target:
+      entity_id: siren.allarme_casa</pre>
+
+        <h2 id="progetto3">8. Progetto 3: Climatizzazione Smart (Budget: 50€)</h2>
+        
+        <p><strong>Tempo: 1 ora | Difficoltà: ⭐⭐</strong></p>
+        
+        <h3>Cosa realizzerai</h3>
+        <ul>
+            <li>Monitoraggio temperatura in ogni stanza</li>
+            <li>Riscaldamento che si adatta ai tuoi orari</li>
+            <li>Risparmio fino al 30% sulla bolletta</li>
+        </ul>
+        
+        <h3>Lista della spesa</h3>
+        
+        <table>
+            <tr><th>Prodotto</th><th>Prezzo</th></tr>
+            <tr><td>2x Sensore temp/umidità Aqara</td><td>€12 cad.</td></tr>
+            <tr><td>1x Valvola termostatica Zigbee</td><td>€25</td></tr>
+            <tr><td><strong>Totale</strong></td><td><strong>~€49</strong></td></tr>
+        </table>
+        
+        <h3>Automazione: Riscaldamento intelligente</h3>
+        
+        <pre>alias: "Riscaldamento Auto"
+trigger:
+  - platform: time
+    at: "06:30:00"
+condition:
+  - condition: numeric_state
+    entity_id: sensor.temperatura_camera
+    below: 19
+action:
+  - service: climate.set_temperature
+    target:
+      entity_id: climate.valvola_camera
+    data:
+      temperature: 21
+  - delay: "02:00:00"
+  - service: climate.set_temperature
+    target:
+      entity_id: climate.valvola_camera
+    data:
+      temperature: 18</pre>
+
+        <h2 id="progetto4">9. Progetto 4: Risparmio Energetico (Budget: 20€)</h2>
+        
+        <p><strong>Tempo: 30 minuti | Difficoltà: ⭐</strong></p>
+        
+        <h3>Cosa realizzerai</h3>
+        <ul>
+            <li>Monitoraggio consumi in tempo reale</li>
+            <li>Spegnimento automatico dispositivi in standby</li>
+            <li>Report settimanale consumi</li>
+        </ul>
+        
+        <h3>Lista della spesa</h3>
+        
+        <table>
+            <tr><th>Prodotto</th><th>Prezzo</th></tr>
+            <tr><td>1x Presa smart con monitoraggio (Nous A1T)</td><td>€12</td></tr>
+            <tr><td>1x Presa smart semplice (IKEA)</td><td>€10</td></tr>
+            <tr><td><strong>Totale</strong></td><td><strong>~€22</strong></td></tr>
+        </table>
+        
+        <h3>Automazione: Spegni standby</h3>
+        
+        <pre>alias: "Anti-Standby TV"
+trigger:
+  - platform: numeric_state
+    entity_id: sensor.presa_tv_power
+    below: 5
+    for: "00:10:00"
+action:
+  - service: switch.turn_off
+    target:
+      entity_id: switch.presa_tv</pre>
+
+        <h2 id="progetto5">10. Progetto 5: Casa Completa (Budget: 100€)</h2>
+        
+        <p><strong>Combinando i progetti precedenti</strong></p>
+        
+        <p>Con 100€ puoi avere:</p>
+        
+        <ul>
+            <li>🏠 Home Assistant su Raspberry Pi</li>
+            <li>💡 Luci smart in 2 stanze</li>
+            <li>🔒 Sensore porta d'ingresso</li>
+            <li>🌡️ Monitoraggio temperatura</li>
+            <li>📱 Controllo da telefono ovunque</li>
+        </ul>
+        
+        <div class="warning">
+            Sono un po' più di 100€ ma il valore che ottieni è enorme! E puoi iniziare comprando un pezzo alla volta.
+        </div>
+
+        <h2 id="automazioni">11. Automazioni Avanzate</h2>
+        
+        <h3>Presenza in casa</h3>
+        
+        <p>Home Assistant può sapere se sei a casa usando il GPS del telefono:</p>
+        
+        <pre>alias: "Benvenuto a Casa"
+trigger:
+  - platform: zone
+    entity_id: person.mario
+    zone: zone.home
+    event: enter
+action:
+  - service: light.turn_on
+    target:
+      entity_id: light.ingresso
+  - service: climate.set_temperature
+    data:
+      temperature: 21</pre>
+        
+        <h3>Notifica lavatrice finita</h3>
+        
+        <pre>alias: "Lavatrice Finita"
+trigger:
+  - platform: numeric_state
+    entity_id: sensor.presa_lavatrice_power
+    below: 3
+    for: "00:05:00"
+condition:
+  - condition: numeric_state
+    entity_id: sensor.presa_lavatrice_power
+    above: 0.5
+action:
+  - service: notify.mobile_app
+    data:
+      message: "👕 La lavatrice ha finito! Stendi il bucato!"</pre>
+
+        <h2 id="problemi">12. Risoluzione Problemi</h2>
+        
+        <h3>Home Assistant non si avvia</h3>
+        <ul>
+            <li>Verifica alimentatore (deve essere 5V/3A minimo)</li>
+            <li>Prova una MicroSD diversa</li>
+            <li>Attendi almeno 20 minuti al primo avvio</li>
+        </ul>
+        
+        <h3>Dispositivo Zigbee non si collega</h3>
+        <ul>
+            <li>Avvicina il dispositivo al dongle</li>
+            <li>Resetta il dispositivo (vedi manuale)</li>
+            <li>Verifica che il canale Zigbee non sia in conflitto con il WiFi</li>
+        </ul>
+        
+        <h3>Automazione non funziona</h3>
+        <ul>
+            <li>Controlla i log: Impostazioni → Sistema → Log</li>
+            <li>Verifica i nomi delle entità (entity_id)</li>
+            <li>Testa i trigger manualmente</li>
+        </ul>
+
+        <h2 id="risorse">13. Risorse e Community</h2>
+        
+        <ul>
+            <li><strong>Sito ufficiale:</strong> home-assistant.io</li>
+            <li><strong>Community italiana:</strong> inDomus.it</li>
+            <li><strong>Forum:</strong> community.home-assistant.io</li>
+            <li><strong>YouTube IT:</strong> cerca "Home Assistant italiano"</li>
+            <li><strong>Reddit:</strong> r/homeassistant</li>
+            <li><strong>Il nostro sito:</strong> CasaSmartFacile.it</li>
+        </ul>
+
+        <h2 id="prodotti">14. Lista Prodotti Consigliati</h2>
+        
+        <h3>Hub e Computer</h3>
+        <table>
+            <tr><th>Prodotto</th><th>Prezzo</th></tr>
+            <tr><td>Raspberry Pi 5 4GB</td><td>€89.99</td></tr>
+            <tr><td>Home Assistant Green</td><td>€99.00</td></tr>
+            <tr><td>Mini PC N95</td><td>€129.00</td></tr>
+        </table>
+        
+        <h3>Coordinatori Zigbee</h3>
+        <table>
+            <tr><th>Prodotto</th><th>Prezzo</th></tr>
+            <tr><td>SONOFF Dongle Plus-E</td><td>€29.99</td></tr>
+            <tr><td>ConBee III</td><td>€39.99</td></tr>
+        </table>
+        
+        <h3>Sensori</h3>
+        <table>
+            <tr><th>Prodotto</th><th>Prezzo</th></tr>
+            <tr><td>Aqara Porta/Finestra</td><td>€8.99</td></tr>
+            <tr><td>Aqara Temperatura</td><td>€12.99</td></tr>
+            <tr><td>Aqara Movimento</td><td>€14.99</td></tr>
+        </table>
+        
+        <hr>
+        
+        <div style="text-align: center; padding: 40px 20px; color: #666;">
+            <p><strong>Conclusione</strong></p>
+            <p>La domotica fai-da-te non è complicata e non deve costare una fortuna. Con questa guida hai tutto quello che serve per iniziare.</p>
+            <p>Ricorda: Inizia semplice, espandi gradualmente, sperimenta, unisciti alla community.</p>
+            <p style="font-size: 1.5rem; margin-top: 20px;">🏠✨ Buona automazione! ✨🏠</p>
+            <p style="margin-top: 30px; font-size: 0.9rem;">© 2026 CasaSmartFacile.it — Questa guida è gratuita. Condividila con chi vuoi!</p>
+            <p><a href="index.html" class="download-btn" style="margin-top: 20px;">← Torna al sito</a></p>
+        </div>
     </div>
 </body>
 </html>
