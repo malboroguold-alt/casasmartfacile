@@ -398,6 +398,7 @@
             background: linear-gradient(45deg, transparent, rgba(0,212,255,0.1), transparent);
             transform: rotate(45deg);
             transition: all 0.6s;
+            pointer-events: none;
         }
         
         .product-card:hover::before {
@@ -473,6 +474,8 @@
             transition: all 0.3s;
             box-shadow: 0 10px 30px rgba(255,153,0,0.4);
             border: 2px solid #ff9900;
+            position: relative;
+            z-index: 10;
         }
         
         .affiliate-btn:hover {
