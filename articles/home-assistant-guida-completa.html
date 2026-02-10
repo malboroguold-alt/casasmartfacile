@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Assistant: Guida Completa per Principianti (2026) | CasaSmartFacile</title>
+    <meta name="description" content="Guida completa a Home Assistant per principianti. Installazione su Raspberry Pi, configurazione, prime automazioni e integrazioni. Tutorial passo-passo 2026.">
+    <meta name="keywords" content="home assistant guida, home assistant italiano, home assistant raspberry pi, domotica fai da te, home assistant principianti, home assistant installazione">
+    <link rel="canonical" href="https://casasmartfacile.github.io/articles/home-assistant-guida-completa.html">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.8; color: #333; background: #f8f9fa; }
+        .article-header { background: linear-gradient(135deg, #11998e, #38ef7d); color: white; padding: 60px 20px; text-align: center; }
+        .article-header h1 { font-size: 2.2rem; max-width: 800px; margin: 0 auto 15px; }
+        .article-meta { opacity: 0.9; font-size: 0.95rem; }
+        .article-body { max-width: 800px; margin: 0 auto; padding: 40px 20px; background: white; margin-top: -30px; border-radius: 12px 12px 0 0; box-shadow: 0 -5px 20px rgba(0,0,0,0.1); }
+        h2 { color: #1a1a2e; font-size: 1.6rem; margin: 40px 0 15px; padding-top: 20px; border-top: 2px solid #f0f0f0; }
+        h3 { color: #0f3460; font-size: 1.2rem; margin: 25px 0 10px; }
+        p { margin-bottom: 15px; }
+        ul, ol { margin: 15px 0 15px 30px; }
+        li { margin-bottom: 8px; }
+        .info-box { background: #e8f5e9; border-left: 4px solid #4caf50; padding: 20px; border-radius: 0 8px 8px 0; margin: 20px 0; }
+        .warning-box { background: #fff3e0; border-left: 4px solid #ff9800; padding: 20px; border-radius: 0 8px 8px 0; margin: 20px 0; }
+        .product-box { background: #f5f5f5; padding: 25px; border-radius: 12px; margin: 20px 0; display: flex; gap: 20px; align-items: center; }
+        .product-box .emoji { font-size: 3rem; }
+        .product-box .affiliate-link { display: inline-block; background: #ff9900; color: white; padding: 8px 20px; border-radius: 6px; text-decoration: none; font-weight: 600; margin-top: 10px; }
+        code { background: #f0f0f0; padding: 2px 8px; border-radius: 4px; font-family: monospace; }
+        pre { background: #1a1a2e; color: #e8e8e8; padding: 20px; border-radius: 8px; overflow-x: auto; margin: 15px 0; }
+        pre code { background: transparent; color: inherit; }
+        .toc { background: #f0f4ff; padding: 25px; border-radius: 12px; margin: 20px 0; }
+        .toc h3 { margin-top: 0; }
+        .toc ul { list-style: none; margin-left: 0; }
+        .toc a { color: #0f3460; text-decoration: none; }
+        .toc a:hover { color: #e94560; }
+        .back-link { display: inline-block; margin: 20px; color: #e94560; text-decoration: none; font-weight: 600; }
+        footer { text-align: center; padding: 30px; color: #666; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="back-link">← Torna alla Home</a>
+    
+    <div class="article-header">
+        <h1>Home Assistant: Guida Completa per Principianti (2026)</h1>
+        <p class="article-meta">📅 Aggiornato: Febbraio 2026 · ⏱️ Lettura: 15 min · 🏷️ Guida Base</p>
+    </div>
+
+    <div class="article-body">
+        <div class="toc">
+            <h3>📑 Indice</h3>
+            <ul>
+                <li>📌 <a href="#cosa">Cos'è Home Assistant?</a></li>
+                <li>📌 <a href="#serve">Cosa ti serve per iniziare</a></li>
+                <li>📌 <a href="#installazione">Installazione su Raspberry Pi</a></li>
+                <li>📌 <a href="#configurazione">Prima configurazione</a></li>
+                <li>📌 <a href="#dispositivi">Aggiungere dispositivi</a></li>
+                <li>📌 <a href="#automazioni">Le tue prime automazioni</a></li>
+                <li>📌 <a href="#zigbee">Zigbee: il protocollo che cambia tutto</a></li>
+                <li>📌 <a href="#avanzato">Passi successivi</a></li>
+            </ul>
+        </div>
+
+        <h2 id="cosa">Cos'è Home Assistant?</h2>
+        <p><strong>Home Assistant</strong> è una piattaforma open source per la domotica che trasforma qualsiasi casa in una smart home. È la soluzione #1 al mondo per chi vuole il <strong>controllo totale</strong> della propria casa, senza dipendere da Google, Amazon o Apple.</p>
+        
+        <p>A differenza di Alexa o Google Home, Home Assistant:</p>
+        <ul>
+            <li>🔒 <strong>Funziona localmente</strong> — i tuoi dati restano a casa tua</li>
+            <li>🔗 <strong>Compatibile con tutto</strong> — oltre 2000 integrazioni</li>
+            <li>🆓 <strong>Completamente gratuito</strong> — software open source</li>
+            <li>⚡ <strong>Automazioni potenti</strong> — puoi automatizzare qualsiasi cosa</li>
+            <li>📱 <strong>App mobile</strong> — controlla tutto dal telefono</li>
+        </ul>
+
+        <h2 id="serve">Cosa ti serve per iniziare</h2>
+        <p>Il bello di Home Assistant è che puoi iniziare con un investimento minimo. Ecco cosa serve:</p>
+
+        <h3>Setup Minimo (~90€)</h3>
+        <div class="product-box">
+            <div class="emoji">🖥️</div>
+            <div>
+                <strong>Raspberry Pi 5 (4GB)</strong><br>
+                Il cervello della tua smart home. Potente abbastanza per gestire centinaia di dispositivi.<br>
+                <strong>Prezzo: ~€89.99</strong><br>
+                <a href="#" class="affiliate-link">Vedi su Amazon →</a>
+            </div>
+        </div>
+
+        <div class="product-box">
+            <div class="emoji">💾</div>
+            <div>
+                <strong>MicroSD 32GB (Classe A2)</strong><br>
+                Samsung EVO Select o SanDisk Extreme. La velocità della scheda è importante!<br>
+                <strong>Prezzo: ~€12.99</strong><br>
+                <a href="#" class="affiliate-link">Vedi su Amazon →</a>
+            </div>
+        </div>
+
+        <div class="product-box">
+            <div class="emoji">🔌</div>
+            <div>
+                <strong>Alimentatore USB-C 5V/3A</strong><br>
+                Usa l'alimentatore ufficiale Raspberry Pi per evitare problemi.<br>
+                <strong>Prezzo: ~€12.99</strong><br>
+                <a href="#" class="affiliate-link">Vedi su Amazon →</a>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <strong>💡 Suggerimento:</strong> Se hai un vecchio PC o un mini PC, puoi usare anche quello! Home Assistant gira su qualsiasi hardware x86. Un mini PC usato da 50€ è un'ottima alternativa.
+        </div>
+
+        <h3>Setup Consigliato (~130€)</h3>
+        <p>Aggiungi un dongle Zigbee per collegare sensori e dispositivi wireless a basso consumo:</p>
+
+        <div class="product-box">
+            <div class="emoji">📡</div>
+            <div>
+                <strong>SONOFF Zigbee 3.0 USB Dongle Plus-E</strong><br>
+                Il coordinatore Zigbee più affidabile e supportato. Funziona con Zigbee2MQTT e ZHA.<br>
+                <strong>Prezzo: ~€29.99</strong><br>
+                <a href="#" class="affiliate-link">Vedi su Amazon →</a>
+            </div>
+        </div>
+
+        <h2 id="installazione">Installazione su Raspberry Pi</h2>
+        <p>L'installazione è semplice e richiede circa 15 minuti:</p>
+
+        <h3>Passo 1: Scarica Raspberry Pi Imager</h3>
+        <p>Vai su <a href="https://www.raspberrypi.com/software/">raspberrypi.com/software</a> e scarica il tool ufficiale per il tuo sistema operativo.</p>
+
+        <h3>Passo 2: Flash dell'immagine</h3>
+        <ol>
+            <li>Apri Raspberry Pi Imager</li>
+            <li>Clicca su <strong>"Choose OS"</strong> → <strong>"Other specific-purpose OS"</strong> → <strong>"Home assistants and home automation"</strong> → <strong>"Home Assistant"</strong></li>
+            <li>Seleziona la versione per il tuo Raspberry Pi</li>
+            <li>Inserisci la microSD e clicca <strong>"Write"</strong></li>
+        </ol>
+
+        <h3>Passo 3: Primo avvio</h3>
+        <ol>
+            <li>Inserisci la microSD nel Raspberry Pi</li>
+            <li>Collega il cavo Ethernet (consigliato) o configura il WiFi</li>
+            <li>Collega l'alimentatore</li>
+            <li>Attendi 5-10 minuti per il primo avvio</li>
+            <li>Apri il browser e vai su <code>http://homeassistant.local:8123</code></li>
+        </ol>
+
+        <div class="warning-box">
+            <strong>⚠️ Attenzione:</strong> Il primo avvio può richiedere fino a 20 minuti. Non scollegare l'alimentazione! Se <code>homeassistant.local</code> non funziona, prova con l'indirizzo IP del Raspberry Pi (lo trovi nel router).
+        </div>
+
+        <h2 id="configurazione">Prima Configurazione</h2>
+        <p>Quando accedi per la prima volta vedrai la schermata di onboarding:</p>
+        <ol>
+            <li><strong>Crea il tuo account</strong> — scegli username e password sicura</li>
+            <li><strong>Imposta la posizione</strong> — serve per automazioni basate su alba/tramonto</li>
+            <li><strong>Seleziona il fuso orario</strong> — Italia: Europe/Rome</li>
+            <li><strong>Scegli le unità</strong> — metrico, Celsius, km</li>
+            <li><strong>Scoperta dispositivi</strong> — HA cercherà automaticamente dispositivi sulla tua rete</li>
+        </ol>
+
+        <h2 id="dispositivi">Aggiungere Dispositivi</h2>
+        <p>Home Assistant supporta oltre <strong>2000 integrazioni</strong>. Ecco i modi principali per aggiungere dispositivi:</p>
+
+        <h3>WiFi (il più semplice)</h3>
+        <p>Dispositivi come lampadine smart Tapo, prese Meross o telecamere si collegano via WiFi. Home Assistant li trova spesso automaticamente.</p>
+
+        <h3>Zigbee (il più consigliato)</h3>
+        <p>Con un dongle Zigbee puoi collegare centinaia di sensori economici. Vantaggi:</p>
+        <ul>
+            <li>Batteria che dura anni</li>
+            <li>Rete mesh — si rinforzano a vicenda</li>
+            <li>Funzionano senza internet</li>
+            <li>Prezzi bassissimi (sensori da 5-10€)</li>
+        </ul>
+
+        <h3>Matter (il futuro)</h3>
+        <p>Il nuovo standard universale supportato da Apple, Google e Amazon. Sempre più dispositivi lo supportano nel 2026.</p>
+
+        <h2 id="automazioni">Le Tue Prime Automazioni</h2>
+        <p>Le automazioni sono il cuore di Home Assistant. Ecco 3 automazioni utili per iniziare:</p>
+
+        <h3>1. Luci automatiche al tramonto</h3>
+        <pre><code>alias: "Luci accese al tramonto"
+trigger:
+  - platform: sun
+    event: sunset
+    offset: "-00:30:00"
+action:
+  - service: light.turn_on
+    target:
+      entity_id: light.soggiorno
+    data:
+      brightness_pct: 70
+      color_temp_kelvin: 3000</code></pre>
+
+        <h3>2. Notifica quando la temperatura scende</h3>
+        <pre><code>alias: "Allarme freddo"
+trigger:
+  - platform: numeric_state
+    entity_id: sensor.temperatura_soggiorno
+    below: 18
+action:
+  - service: notify.mobile_app
+    data:
+      message: "🥶 Temperatura sotto i 18°C!"</code></pre>
+
+        <h3>3. Spegni tutto quando esci</h3>
+        <pre><code>alias: "Uscita di casa"
+trigger:
+  - platform: zone
+    entity_id: person.mario
+    zone: zone.home
+    event: leave
+action:
+  - service: light.turn_off
+    target:
+      entity_id: all
+  - service: climate.set_temperature
+    target:
+      entity_id: climate.termostato
+    data:
+      temperature: 16</code></pre>
+
+        <h2 id="zigbee">Zigbee: Il Protocollo che Cambia Tutto</h2>
+        <p>Se c'è un consiglio che posso darti è questo: <strong>investi in Zigbee</strong>. Ecco perché:</p>
+        
+        <ul>
+            <li><strong>Sensore porta/finestra Aqara:</strong> ~8€, batteria 2 anni</li>
+            <li><strong>Sensore temperatura Aqara:</strong> ~12€, batteria 2 anni</li>
+            <li><strong>Sensore movimento Aqara:</strong> ~15€, batteria 2 anni</li>
+            <li><strong>Pulsante wireless IKEA:</strong> ~8€</li>
+            <li><strong>Lampadina Zigbee IKEA:</strong> ~10€</li>
+        </ul>
+
+        <p>Con <strong>meno di 50€</strong> puoi automatizzare una stanza intera: luci automatiche con sensore di movimento, monitoraggio temperatura e sicurezza con sensore porta.</p>
+
+        <h2 id="avanzato">Passi Successivi</h2>
+        <p>Una volta presa confidenza, puoi esplorare:</p>
+        <ul>
+            <li>🎤 <strong>Assistente vocale locale</strong> — comandi vocali senza cloud</li>
+            <li>📊 <strong>Dashboard personalizzate</strong> — crea pannelli di controllo su tablet</li>
+            <li>🔋 <strong>Monitoraggio energia</strong> — tieni sotto controllo i consumi</li>
+            <li>📹 <strong>Videosorveglianza</strong> — integra telecamere con Frigate NVR</li>
+            <li>🌿 <strong>Irrigazione smart</strong> — automatizza il giardino</li>
+        </ul>
+
+        <div class="info-box">
+            <strong>📖 Vuoi approfondire?</strong> Scarica il nostro ebook gratuito <strong>"Domotica a Basso Costo"</strong> con 50+ pagine di guide pratiche, schemi di automazione e lista completa dei prodotti consigliati. <a href="https://casasmartfacile.gumroad.com/l/domotica-basso-costo">Scaricalo qui →</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 CasaSmartFacile.it — <a href="../index.html" style="color: #e94560;">Torna alla Home</a></p>
+    </footer>
+</body>
+</html>
