@@ -712,15 +712,37 @@
             studio: []
         };
 
+        let selectedDevice = null;
+
         // Drag and Drop
         const deviceItems = document.querySelectorAll('.device-item');
         const dropZones = document.querySelectorAll('.drop-zone');
 
         deviceItems.forEach(item => {
+            // Desktop: dragstart
             item.addEventListener('dragstart', (e) => {
+                console.log('Drag start:', item.dataset.device, item.dataset.price);
                 e.dataTransfer.setData('device', item.dataset.device);
                 e.dataTransfer.setData('price', item.dataset.price);
                 e.dataTransfer.setData('saving', item.dataset.saving);
+            });
+            
+            // Mobile/click: selezione
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                selectedDevice = {
+                    name: item.dataset.device,
+                    price: parseInt(item.dataset.price) || 0,
+                    saving: parseInt(item.dataset.saving) || 0
+                };
+                
+                // Evidenzia il dispositivo selezionato
+                deviceItems.forEach(d => d.style.borderColor = 'rgba(0,212,255,0.3)');
+                item.style.borderColor = '#00ff88';
+                item.style.boxShadow = '0 0 20px rgba(0,255,136,0.5)';
+                
+                console.log('Selezionato:', selectedDevice);
+                alert(`✅ ${selectedDevice.name} selezionato! Clicca su una stanza per posizionarlo.`);
             });
         });
 
@@ -739,11 +761,28 @@
                 zone.classList.remove('drag-over');
 
                 const deviceName = e.dataTransfer.getData('device');
-                const price = parseInt(e.dataTransfer.getData('price'));
-                const saving = parseInt(e.dataTransfer.getData('saving'));
+                const price = parseInt(e.dataTransfer.getData('price')) || 0;
+                const saving = parseInt(e.dataTransfer.getData('saving')) || 0;
                 const room = zone.id.replace('zone-', '');
 
+                console.log('Drop:', deviceName, price, saving, room);
                 addDeviceToRoom(room, deviceName, price, saving);
+            });
+            
+            // Click per mobile/selezione
+            zone.addEventListener('click', (e) => {
+                if (selectedDevice) {
+                    const room = zone.id.replace('zone-', '');
+                    console.log('Click drop:', selectedDevice, room);
+                    addDeviceToRoom(room, selectedDevice.name, selectedDevice.price, selectedDevice.saving);
+                    
+                    // Reset selezione
+                    selectedDevice = null;
+                    deviceItems.forEach(d => {
+                        d.style.borderColor = 'rgba(0,212,255,0.3)';
+                        d.style.boxShadow = '';
+                    });
+                }
             });
         });
 
