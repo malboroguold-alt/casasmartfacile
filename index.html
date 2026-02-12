@@ -404,26 +404,15 @@
         }
         
         .product-visual {
-            width: 100%;
-            height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-            overflow: hidden;
-            border-radius: 12px;
-            background: rgba(0,255,204,0.05);
+            font-size: 80px;
+            text-align: center;
+            margin-bottom: 25px;
+            filter: drop-shadow(0 0 30px var(--glow-1));
+            transition: transform 0.5s;
         }
         
-        .product-visual img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-        
-        .product-card:hover .product-visual img {
-            transform: scale(1.05);
+        .product-card:hover .product-visual {
+            transform: scale(1.2) rotate(10deg);
         }
         
         .product-card:hover .product-visual {
@@ -826,7 +815,7 @@
             <!-- PRODOTTO 1 - Raspberry Pi 5 -->
             <div class="product-card">
                 <span class="product-badge">🏆 BEST</span>
-                <div class="product-visual"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=300&fit=crop" alt="Raspberry Pi 5 circuit board" loading="lazy"></div>
+                <div class="product-visual">🖥️</div>
                 <h3 class="product-name">Raspberry Pi 5 (8GB)</h3>
                 <p class="product-desc">Il cervello della tua smart home. Potenza da server professionale con consumi minimi. Perfetto per Home Assistant.</p>
                 <div class="product-meta">
@@ -839,7 +828,7 @@
             <!-- PRODOTTO 2 - SONOFF Zigbee -->
             <div class="product-card">
                 <span class="product-badge">⚡ TOP</span>
-                <div class="product-visual"><img src="https://images.unsplash.com/photo-1623944892391-d8599691d058?w=400&h=300&fit=crop" alt="SONOFF Zigbee USB dongle" loading="lazy"></div>
+                <div class="product-visual">📡</div>
                 <h3 class="product-name">SONOFF Zigbee 3.0 Dongle</h3>
                 <p class="product-desc">Coordinatore Zigbee universale. Compatibile con centinaia di dispositivi. Plug & play con Home Assistant.</p>
                 <div class="product-meta">
@@ -852,7 +841,7 @@
             <!-- PRODOTTO 3 - Philips Hue Bridge -->
             <div class="product-card">
                 <span class="product-badge">🌟 PREMIUM</span>
-                <div class="product-visual"><img src="https://images.unsplash.com/photo-1585232004423-244e0e6904e3?w=400&h=300&fit=crop" alt="Philips Hue Bridge hub" loading="lazy"></div>
+                <div class="product-visual">💡</div>
                 <h3 class="product-name">Philips Hue Bridge</h3>
                 <p class="product-desc">Il cuore del sistema Hue. Controlla fino a 50 luci e accessori. Integrazione perfetta con ogni piattaforma.</p>
                 <div class="product-meta">
@@ -865,7 +854,7 @@
             <!-- PRODOTTO 4 - Aqara Sensor -->
             <div class="product-card">
                 <span class="product-badge">💰 VALUE</span>
-                <div class="product-visual"><img src="https://images.unsplash.com/photo-1558002038-1055907df827?w=400&h=300&fit=crop" alt="Smart home sensor" loading="lazy"></div>
+                <div class="product-visual">🌡️</div>
                 <h3 class="product-name">Aqara Temp/Humidity (3 Pack)</h3>
                 <p class="product-desc">Sensori di temperatura e umidità Zigbee. Batteria 2 anni, precisione professionale. Ideale per ogni stanza.</p>
                 <div class="product-meta">
@@ -878,7 +867,7 @@
             <!-- PRODOTTO 5 - LEFANT M210-Pro -->
             <div class="product-card">
                 <span class="product-badge">🤖 ROBOT</span>
-                <div class="product-visual"><img src="https://images.unsplash.com/photo-1518640467707-6811f4a6ab73?w=400&h=300&fit=crop" alt="Robot vacuum cleaner" loading="lazy"></div>
+                <div class="product-visual">🤖</div>
                 <h3 class="product-name">LEFANT M210-Pro</h3>
                 <p class="product-desc">Robot aspirapolvere economico con 2200Pa, Wi-Fi/App/Alexa, 120 min autonomia. Ideale per iniziare.</p>
                 <div class="product-meta">
@@ -891,7 +880,7 @@
             <!-- PRODOTTO 6 - Roborock Q10 S5 -->
             <div class="product-card">
                 <span class="product-badge">⚡ POTENTE</span>
-                <div class="product-visual"><img src="https://images.unsplash.com/photo-1589894404892-7310b9b39dc9?w=400&h=300&fit=crop" alt="Robot vacuum top view" loading="lazy"></div>
+                <div class="product-visual">🧹</div>
                 <h3 class="product-name">Roborock Q10 S5</h3>
                 <p class="product-desc">Robot con 10.000Pa aspirazione, VibraRise 2.0, navigazione LiDAR e moci vibranti. Top sotto i 200€.</p>
                 <div class="product-meta">
@@ -904,7 +893,7 @@
             <!-- PRODOTTO 7 - ECOVACS DEEBOT N20 PRO Plus -->
             <div class="product-card">
                 <span class="product-badge">🏠 STAZIONE</span>
-                <div class="product-visual"><img src="https://images.unsplash.com/photo-1567690187548-f07b1d7bf5a9?w=400&h=300&fit=crop" alt="Robot vacuum with dock" loading="lazy"></div>
+                <div class="product-visual">🏠</div>
                 <h3 class="product-name">ECOVACS DEEBOT N20 PRO Plus</h3>
                 <p class="product-desc">8000Pa, stazione svuotamento automatico, 300 min autonomia, PureCycle. Pulizia senza pensieri.</p>
                 <div class="product-meta">
@@ -917,7 +906,7 @@
             <!-- PRODOTTO 8 - Xiaomi Robot Vacuum X20+ -->
             <div class="product-card">
                 <span class="product-badge">🏆 BEST BUY</span>
-                <div class="product-visual"><img src="https://images.unsplash.com/photo-1558317374-067fb5f30001?w=400&h=300&fit=crop" alt="Modern robot vacuum" loading="lazy"></div>
+                <div class="product-visual">⭐</div>
                 <h3 class="product-name">Xiaomi Robot Vacuum X20+</h3>
                 <p class="product-desc">6000Pa, doppio mocio rotante, base lavaggio e svuotamento automatico. Il miglior rapporto qualità/prezzo.</p>
                 <div class="product-meta">
