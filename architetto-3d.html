@@ -237,6 +237,12 @@
             transform: scale(1.1);
         }
 
+        /* Animazioni */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
         /* Stats Panel */
         .stats-panel {
             background: rgba(255,255,255,0.05);
@@ -742,7 +748,11 @@
         });
 
         function addDeviceToRoom(room, deviceName, price, saving) {
-            houseDevices[room].push({ name: deviceName, price, saving });
+            // Assicurati che siano numeri validi
+            const numPrice = parseInt(price) || 0;
+            const numSaving = parseInt(saving) || 0;
+            
+            houseDevices[room].push({ name: deviceName, price: numPrice, saving: numSaving });
 
             const zone = document.getElementById(`zone-${room}`);
             if (zone.querySelector('span')) {
@@ -752,10 +762,11 @@
             const deviceEl = document.createElement('div');
             deviceEl.className = 'dropped-device';
             deviceEl.textContent = deviceName;
-            deviceEl.title = `€${price} - Risparmio €${saving}/anno`;
+            deviceEl.title = `€${numPrice} - Risparmio €${numSaving}/anno`;
             deviceEl.onclick = () => removeDevice(room, deviceName);
             zone.appendChild(deviceEl);
 
+            console.log(`Aggiunto ${deviceName} a ${room}: €${numPrice}, risparmio €${numSaving}`);
             updateStats();
         }
 
@@ -780,16 +791,29 @@
 
             Object.values(houseDevices).forEach(roomDevices => {
                 roomDevices.forEach(device => {
-                    totalCost += device.price;
-                    totalSavings += device.saving;
+                    // Assicurati che siano numeri
+                    const price = parseInt(device.price) || 0;
+                    const saving = parseInt(device.saving) || 0;
+                    totalCost += price;
+                    totalSavings += saving;
                     totalDevices++;
                 });
             });
 
-            // Aggiorna UI
-            document.getElementById('total-cost').textContent = `€${totalCost}`;
-            document.getElementById('total-savings').textContent = `€${totalSavings}`;
-            document.getElementById('device-count').textContent = totalDevices;
+            // Aggiorna UI con animazione
+            const costEl = document.getElementById('total-cost');
+            const savingsEl = document.getElementById('total-savings');
+            const countEl = document.getElementById('device-count');
+            
+            costEl.textContent = `€${totalCost}`;
+            costEl.style.animation = 'pulse 0.5s';
+            setTimeout(() => costEl.style.animation = '', 500);
+            
+            savingsEl.textContent = `€${totalSavings}`;
+            savingsEl.style.animation = 'pulse 0.5s';
+            setTimeout(() => savingsEl.style.animation = '', 500);
+            
+            countEl.textContent = totalDevices;
 
             // Calcola ROI
             const roi = totalSavings > 0 ? Math.ceil(totalCost / (totalSavings / 12)) : 0;
@@ -799,11 +823,16 @@
             const savings5Years = totalSavings * 5;
             const maxVal = Math.max(totalCost, savings5Years, 1);
 
-            document.getElementById('bar-invest').style.height = `${(totalCost / maxVal) * 100}%`;
+            const investBar = document.getElementById('bar-invest');
+            const savingBar = document.getElementById('bar-saving');
+            
+            investBar.style.height = `${(totalCost / maxVal) * 100}%`;
             document.getElementById('bar-invest-val').textContent = `€${totalCost}`;
 
-            document.getElementById('bar-saving').style.height = `${(savings5Years / maxVal) * 100}%`;
+            savingBar.style.height = `${(savings5Years / maxVal) * 100}%`;
             document.getElementById('bar-saving-val').textContent = `€${savings5Years}`;
+            
+            console.log('Stats aggiornate:', { totalCost, totalSavings, totalDevices, roi });
         }
 
         function resetHouse() {
