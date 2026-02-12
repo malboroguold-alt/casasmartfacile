@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Configuratore 3D interattivo per casa smart. Progetta, calcola risparmi, genera lista acquisti automatica.">
+    <title>🏠 ARCHITETTO SMART 3D | Configura la Tua Casa del Futuro</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(0,0,0,0.3);
+            border-bottom: 2px solid #00d4ff;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            background: linear-gradient(45deg, #00d4ff, #7b2cbf);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #aaa;
+            font-size: 1.1rem;
+        }
+
+        /* Main Container */
+        .container {
+            display: grid;
+            grid-template-columns: 300px 1fr 300px;
+            gap: 20px;
+            padding: 20px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 1200px) {
+            .container { grid-template-columns: 1fr; }
+        }
+
+        /* Sidebar dispositivi */
+        .devices-panel {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 20px;
+            border: 1px solid rgba(0,212,255,0.3);
+        }
+
+        .devices-panel h2 {
+            color: #00d4ff;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            text-align: center;
+        }
+
+        .device-category {
+            margin-bottom: 25px;
+        }
+
+        .device-category h3 {
+            color: #7b2cbf;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .device-item {
+            background: linear-gradient(135deg, rgba(0,212,255,0.1), rgba(123,44,191,0.1));
+            border: 1px solid rgba(0,212,255,0.3);
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 10px;
+            cursor: grab;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .device-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 0 20px rgba(0,212,255,0.3);
+            border-color: #00d4ff;
+        }
+
+        .device-item:active {
+            cursor: grabbing;
+        }
+
+        .device-icon {
+            font-size: 1.5rem;
+        }
+
+        .device-info {
+            flex: 1;
+        }
+
+        .device-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .device-price {
+            color: #00ff88;
+            font-size: 0.8rem;
+        }
+
+        /* Casa 3D */
+        .house-container {
+            perspective: 1500px;
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .house-3d {
+            width: 100%;
+            max-width: 600px;
+            height: 500px;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: rotateHouse 60s linear infinite;
+        }
+
+        @keyframes rotateHouse {
+            0% { transform: rotateY(0deg); }
+            100% { transform: rotateY(360deg); }
+        }
+
+        .room {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: rgba(0,212,255,0.1);
+            border: 2px solid #00d4ff;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .room:hover {
+            background: rgba(0,212,255,0.2);
+            box-shadow: 0 0 30px rgba(0,212,255,0.5);
+        }
+
+        .room.soggiorno {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) translateZ(100px);
+        }
+
+        .room.cucina {
+            top: 50%;
+            left: 20%;
+            transform: translate(-50%, -50%) translateZ(0px) rotateY(-30deg);
+        }
+
+        .room.camera {
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%) translateZ(0px) rotateX(30deg);
+        }
+
+        .room.bagno {
+            top: 80%;
+            left: 50%;
+            transform: translate(-50%, -50%) translateZ(0px) rotateX(-30deg);
+        }
+
+        .room.studio {
+            top: 50%;
+            left: 80%;
+            transform: translate(-50%, -50%) translateZ(0px) rotateY(30deg);
+        }
+
+        .room-title {
+            font-size: 1.1rem;
+            color: #00d4ff;
+            margin-bottom: 10px;
+        }
+
+        .room-devices {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .drop-zone {
+            border: 2px dashed rgba(0,212,255,0.5);
+            border-radius: 10px;
+            padding: 10px;
+            min-height: 60px;
+            width: 90%;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .drop-zone.drag-over {
+            background: rgba(0,212,255,0.2);
+            border-color: #00d4ff;
+        }
+
+        .dropped-device {
+            background: linear-gradient(135deg, #00d4ff, #7b2cbf);
+            border-radius: 5px;
+            padding: 5px 10px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .dropped-device:hover {
+            transform: scale(1.1);
+        }
+
+        /* Stats Panel */
+        .stats-panel {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 20px;
+            border: 1px solid rgba(123,44,191,0.3);
+        }
+
+        .stats-panel h2 {
+            color: #7b2cbf;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            text-align: center;
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, rgba(0,255,136,0.1), rgba(0,212,255,0.1));
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(0,255,136,0.3);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #aaa;
+            margin-bottom: 5px;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #00ff88;
+        }
+
+        .stat-value.cost {
+            color: #ff6b6b;
+        }
+
+        .savings-chart {
+            background: rgba(0,0,0,0.3);
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+
+        .chart-title {
+            color: #00d4ff;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .bar-container {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            height: 150px;
+            margin-top: 20px;
+        }
+
+        .bar {
+            width: 40px;
+            background: linear-gradient(to top, #ff6b6b, #ffa500);
+            border-radius: 5px 5px 0 0;
+            transition: all 0.5s;
+            position: relative;
+        }
+
+        .bar.savings {
+            background: linear-gradient(to top, #00ff88, #00d4ff);
+        }
+
+        .bar-label {
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.7rem;
+            white-space: nowrap;
+            color: #aaa;
+        }
+
+        .bar-value {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        /* Buttons */
+        .btn {
+            width: 100%;
+            padding: 15px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #00d4ff, #7b2cbf);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,212,255,0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid #00ff88;
+            color: #00ff88;
+        }
+
+        .btn-secondary:hover {
+            background: #00ff88;
+            color: #000;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            border: 2px solid #00d4ff;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            color: #00d4ff;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .shopping-list {
+            list-style: none;
+        }
+
+        .shopping-item {
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .shopping-item-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .shopping-item-price {
+            color: #00ff88;
+            font-weight: bold;
+        }
+
+        .total-box {
+            background: linear-gradient(135deg, rgba(0,212,255,0.2), rgba(123,44,191,0.2));
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .total-label {
+            color: #aaa;
+            margin-bottom: 5px;
+        }
+
+        .total-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #00ff88;
+        }
+
+        /* Animazioni */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .container { grid-template-columns: 1fr; }
+            .house-3d { height: 400px; }
+            .room { width: 150px; height: 150px; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>🏠 ARCHITETTO SMART 3D</h1>
+        <p>Progetta la tua casa del futuro. Trascina i dispositivi, calcola i risparmi, genera la lista acquisti.</p>
+    </header>
+
+    <div class="container">
+        <!-- Panel Dispositivi -->
+        <div class="devices-panel">
+            <h2>📦 Dispositivi Disponibili</h2>
+            
+            <div class="device-category">
+                <h3>💡 Illuminazione</h3>
+                <div class="device-item" draggable="true" data-device="Lampadina Smart" data-price="15" data-saving="25">
+                    <span class="device-icon">💡</span>
+                    <div class="device-info">
+                        <div class="device-name">Lampadina Smart</div>
+                        <div class="device-price">€15 | Risparmio €25/anno</div>
+                    </div>
+                </div>
+                <div class="device-item" draggable="true" data-device="Striscia LED" data-price="29" data-saving="40">
+                    <span class="device-icon">✨</span>
+                    <div class="device-info">
+                        <div class="device-name">Striscia LED</div>
+                        <div class="device-price">€29 | Risparmio €40/anno</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="device-category">
+                <h3>🔌 Controllo</h3>
+                <div class="device-item" draggable="true" data-device="Presa Smart" data-price="12" data-saving="30">
+                    <span class="device-icon">🔌</span>
+                    <div class="device-info">
+                        <div class="device-name">Presa Smart</div>
+                        <div class="device-price">€12 | Risparmio €30/anno</div>
+                    </div>
+                </div>
+                <div class="device-item" draggable="true" data-device="Interruttore Smart" data-price="25" data-saving="35">
+                    <span class="device-icon">🔲</span>
+                    <div class="device-info">
+                        <div class="device-name">Interruttore Smart</div>
+                        <div class="device-price">€25 | Risparmio €35/anno</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="device-category">
+                <h3>🌡️ Clima</h3>
+                <div class="device-item" draggable="true" data-device="Termostato Smart" data-price="89" data-saving="150">
+                    <span class="device-icon">🌡️</span>
+                    <div class="device-info">
+                        <div class="device-name">Termostato Smart</div>
+                        <div class="device-price">€89 | Risparmio €150/anno</div>
+                    </div>
+                </div>
+                <div class="device-item" draggable="true" data-device="Sensore Temperatura" data-price="15" data-saving="20">
+                    <span class="device-icon">📊</span>
+                    <div class="device-info">
+                        <div class="device-name">Sensore Temp/Hum</div>
+                        <div class="device-price">€15 | Risparmio €20/anno</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="device-category">
+                <h3>🛡️ Sicurezza</h3>
+                <div class="device-item" draggable="true" data-device="Telecamera WiFi" data-price="45" data-saving="0">
+                    <span class="device-icon">📹</span>
+                    <div class="device-info">
+                        <div class="device-name">Telecamera WiFi</div>
+                        <div class="device-price">€45 | Sicurezza</div>
+                    </div>
+                </div>
+                <div class="device-item" draggable="true" data-device="Sensore Porta" data-price="18" data-saving="0">
+                    <span class="device-icon">🚪</span>
+                    <div class="device-info">
+                        <div class="device-name">Sensore Porta</div>
+                        <div class="device-price">€18 | Sicurezza</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="device-category">
+                <h3>🤖 Hub</h3>
+                <div class="device-item" draggable="true" data-device="Home Assistant" data-price="89" data-saving="200">
+                    <span class="device-icon">🧠</span>
+                    <div class="device-info">
+                        <div class="device-name">Home Assistant</div>
+                        <div class="device-price">€89 | Risparmio €200/anno</div>
+                    </div>
+                </div>
+                <div class="device-item" draggable="true" data-device="Amazon Echo" data-price="59" data-saving="50">
+                    <span class="device-icon">🔊</span>
+                    <div class="device-info">
+                        <div class="device-name">Amazon Echo</div>
+                        <div class="device-price">€59 | Risparmio €50/anno</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Casa 3D -->
+        <div class="house-container">
+            <div class="house-3d">
+                <div class="room soggiorno" data-room="soggiorno">
+                    <div class="room-title">🛋️ Soggiorno</div>
+                    <div class="drop-zone" id="zone-soggiorno">
+                        <span style="color: #666; font-size: 0.8rem;">Trascina qui</span>
+                    </div>
+                </div>
+
+                <div class="room cucina" data-room="cucina">
+                    <div class="room-title">🍳 Cucina</div>
+                    <div class="drop-zone" id="zone-cucina">
+                        <span style="color: #666; font-size: 0.8rem;">Trascina qui</span>
+                    </div>
+                </div>
+
+                <div class="room camera" data-room="camera">
+                    <div class="room-title">🛏️ Camera</div>
+                    <div class="drop-zone" id="zone-camera">
+                        <span style="color: #666; font-size: 0.8rem;">Trascina qui</span>
+                    </div>
+                </div>
+
+                <div class="room bagno" data-room="bagno">
+                    <div class="room-title">🚿 Bagno</div>
+                    <div class="drop-zone" id="zone-bagno">
+                        <span style="color: #666; font-size: 0.8rem;">Trascina qui</span>
+                    </div>
+                </div>
+
+                <div class="room studio" data-room="studio">
+                    <div class="room-title">💻 Studio</div>
+                    <div class="drop-zone" id="zone-studio">
+                        <span style="color: #666; font-size: 0.8rem;">Trascina qui</span>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="btn btn-secondary" onclick="resetHouse()">🔄 Reset Casa</button>
+                <button class="btn btn-primary" onclick="showShoppingList()">🛒 Genera Lista Acquisti</button>
+            </div>
+        </div>
+
+        <!-- Panel Stats -->
+        <div class="stats-panel">
+            <h2>📊 Analisi in Tempo Reale</h2>
+
+            <div class="stat-box">
+                <div class="stat-label">💰 Investimento Totale</div>
+                <div class="stat-value cost" id="total-cost">€0</div>
+            </div>
+
+            <div class="stat-box">
+                <div class="stat-label">💶 Risparmio Anno</div>
+                <div class="stat-value" id="total-savings">€0</div>
+            </div>
+
+            <div class="stat-box">
+                <div class="stat-label">📅 ROI (Payback)</div>
+                <div class="stat-value" id="roi">- mesi</div>
+            </div>
+
+            <div class="savings-chart">
+                <div class="chart-title">📈 Proiezione 5 Anni</div>
+                <div class="bar-container">
+                    <div class="bar" id="bar-invest">
+                        <div class="bar-value" id="bar-invest-val">€0</div>
+                        <div class="bar-label">Investimento</div>
+                    </div>
+                    <div class="bar savings" id="bar-saving">
+                        <div class="bar-value" id="bar-saving-val">€0</div>
+                        <div class="bar-label">Risparmio</div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 20px; padding: 15px; background: rgba(0,0,0,0.3); border-radius: 10px;">
+                <div style="color: #aaa; font-size: 0.9rem; margin-bottom: 10px;">🏠 Dispositivi Installati:</div>
+                <div id="device-count" style="font-size: 1.5rem; color: #00d4ff;">0</div>
+            </div>
+
+            <a href="index.html" class="btn btn-secondary" style="margin-top: 20px; display: block; text-align: center; text-decoration: none;">← Torna al Sito</a>
+        </div>
+    </div>
+
+    <!-- Modal Lista Acquisti -->
+    <div class="modal" id="shoppingModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">🛒 La Tua Lista Acquisti</h2>
+                <button class="modal-close" onclick="closeModal()">✕</button>
+            </div>
+            
+            <ul class="shopping-list" id="shoppingList">
+                <!-- Generato dinamicamente -->
+            </ul>
+
+            <div class="total-box">
+                <div class="total-label">Investimento Totale</div>
+                <div class="total-value" id="modal-total">€0</div>
+            </div>
+
+            <div style="margin-top: 20px; padding: 15px; background: rgba(0,255,136,0.1); border-radius: 10px;">
+                <div style="color: #00ff88; font-size: 0.9rem;">💡 Suggerimento:</div>
+                <div style="color: #aaa; font-size: 0.85rem; margin-top: 5px;">
+                    Questa configurazione ti farà risparmiare <span id="modal-savings" style="color: #00ff88; font-weight: bold;">€0/anno</span>.
+                    Il payback è in <span id="modal-roi" style="color: #00d4ff; font-weight: bold;">- mesi</span>.
+                </div>
+            </div>
+
+            <a href="https://amzn.to/3XxSample" target="_blank" class="btn btn-primary" style="display: block; text-align: center; text-decoration: none; margin-top: 20px;">
+                🛍️ Acquista su Amazon
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Stato applicazione
+        let houseDevices = {
+            soggiorno: [],
+            cucina: [],
+            camera: [],
+            bagno: [],
+            studio: []
+        };
+
+        // Drag and Drop
+        const deviceItems = document.querySelectorAll('.device-item');
+        const dropZones = document.querySelectorAll('.drop-zone');
+
+        deviceItems.forEach(item => {
+            item.addEventListener('dragstart', (e) => {
+                e.dataTransfer.setData('device', item.dataset.device);
+                e.dataTransfer.setData('price', item.dataset.price);
+                e.dataTransfer.setData('saving', item.dataset.saving);
+            });
+        });
+
+        dropZones.forEach(zone => {
+            zone.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                zone.classList.add('drag-over');
+            });
+
+            zone.addEventListener('dragleave', () => {
+                zone.classList.remove('drag-over');
+            });
+
+            zone.addEventListener('drop', (e) => {
+                e.preventDefault();
+                zone.classList.remove('drag-over');
+
+                const deviceName = e.dataTransfer.getData('device');
+                const price = parseInt(e.dataTransfer.getData('price'));
+                const saving = parseInt(e.dataTransfer.getData('saving'));
+                const room = zone.id.replace('zone-', '');
+
+                addDeviceToRoom(room, deviceName, price, saving);
+            });
+        });
+
+        function addDeviceToRoom(room, deviceName, price, saving) {
+            houseDevices[room].push({ name: deviceName, price, saving });
+
+            const zone = document.getElementById(`zone-${room}`);
+            if (zone.querySelector('span')) {
+                zone.innerHTML = '';
+            }
+
+            const deviceEl = document.createElement('div');
+            deviceEl.className = 'dropped-device';
+            deviceEl.textContent = deviceName;
+            deviceEl.title = `€${price} - Risparmio €${saving}/anno`;
+            deviceEl.onclick = () => removeDevice(room, deviceName);
+            zone.appendChild(deviceEl);
+
+            updateStats();
+        }
+
+        function removeDevice(room, deviceName) {
+            houseDevices[room] = houseDevices[room].filter(d => d.name !== deviceName);
+
+            const zone = document.getElementById(`zone-${room}`);
+            const deviceEl = Array.from(zone.children).find(el => el.textContent === deviceName);
+            if (deviceEl) deviceEl.remove();
+
+            if (houseDevices[room].length === 0) {
+                zone.innerHTML = '<span style="color: #666; font-size: 0.8rem;">Trascina qui</span>';
+            }
+
+            updateStats();
+        }
+
+        function updateStats() {
+            let totalCost = 0;
+            let totalSavings = 0;
+            let totalDevices = 0;
+
+            Object.values(houseDevices).forEach(roomDevices => {
+                roomDevices.forEach(device => {
+                    totalCost += device.price;
+                    totalSavings += device.saving;
+                    totalDevices++;
+                });
+            });
+
+            // Aggiorna UI
+            document.getElementById('total-cost').textContent = `€${totalCost}`;
+            document.getElementById('total-savings').textContent = `€${totalSavings}`;
+            document.getElementById('device-count').textContent = totalDevices;
+
+            // Calcola ROI
+            const roi = totalSavings > 0 ? Math.ceil(totalCost / (totalSavings / 12)) : 0;
+            document.getElementById('roi').textContent = roi > 0 ? `${roi} mesi` : '- mesi';
+
+            // Aggiorna grafico
+            const savings5Years = totalSavings * 5;
+            const maxVal = Math.max(totalCost, savings5Years, 1);
+
+            document.getElementById('bar-invest').style.height = `${(totalCost / maxVal) * 100}%`;
+            document.getElementById('bar-invest-val').textContent = `€${totalCost}`;
+
+            document.getElementById('bar-saving').style.height = `${(savings5Years / maxVal) * 100}%`;
+            document.getElementById('bar-saving-val').textContent = `€${savings5Years}`;
+        }
+
+        function resetHouse() {
+            houseDevices = { soggiorno: [], cucina: [], camera: [], bagno: [], studio: [] };
+
+            document.querySelectorAll('.drop-zone').forEach(zone => {
+                zone.innerHTML = '<span style="color: #666; font-size: 0.8rem;">Trascina qui</span>';
+            });
+
+            updateStats();
+        }
+
+        function showShoppingList() {
+            const listEl = document.getElementById('shoppingList');
+            listEl.innerHTML = '';
+
+            let totalCost = 0;
+            let totalSavings = 0;
+
+            const allDevices = [];
+            Object.entries(houseDevices).forEach(([room, devices]) => {
+                devices.forEach(device => {
+                    allDevices.push({ ...device, room });
+                    totalCost += device.price;
+                    totalSavings += device.saving;
+                });
+            });
+
+            if (allDevices.length === 0) {
+                listEl.innerHTML = '<li style="color: #666; text-align: center;">Nessun dispositivo selezionato</li>';
+            } else {
+                // Raggruppa per tipo
+                const grouped = {};
+                allDevices.forEach(d => {
+                    if (!grouped[d.name]) {
+                        grouped[d.name] = { count: 0, price: d.price, saving: d.saving, rooms: [] };
+                    }
+                    grouped[d.name].count++;
+                    grouped[d.name].rooms.push(d.room);
+                });
+
+                Object.entries(grouped).forEach(([name, data]) => {
+                    const li = document.createElement('li');
+                    li.className = 'shopping-item';
+                    li.innerHTML = `
+                        <div class="shopping-item-info">
+                            <span>${name}</span>
+                            <span style="color: #666; font-size: 0.8rem;">(${data.count}x - ${data.rooms.join(', ')})</span>
+                        </div>
+                        <div class="shopping-item-price">€${data.price * data.count}</div>
+                    `;
+                    listEl.appendChild(li);
+                });
+            }
+
+            document.getElementById('modal-total').textContent = `€${totalCost}`;
+            document.getElementById('modal-savings').textContent = `€${totalSavings}/anno`;
+
+            const roi = totalSavings > 0 ? Math.ceil(totalCost / (totalSavings / 12)) : 0;
+            document.getElementById('modal-roi').textContent = roi > 0 ? `${roi} mesi` : 'N/A';
+
+            document.getElementById('shoppingModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('shoppingModal').classList.remove('active');
+        }
+
+        // Chiudi modal cliccando fuori
+        document.getElementById('shoppingModal').addEventListener('click', (e) => {
+            if (e.target.id === 'shoppingModal') closeModal();
+        });
+    </script>
+</body>
+</html>
