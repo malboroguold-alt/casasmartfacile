@@ -1,3 +1,9 @@
 User-agent: *
 Allow: /
-Sitemap: https://casasmartfacile.github.io/sitemap.xml
+
+# Sitemap
+Sitemap: https://malboroguold-alt.github.io/casasmartfacile/sitemap.xml
+
+# Block sensitive directories (if any)
+Disallow: /private/
+Disallow: /admin/
