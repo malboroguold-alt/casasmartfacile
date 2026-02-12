@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Esperienza immersiva Casa del Futuro - Domotica 3D">
+    <title>🏠 CASA DEL FUTURO 3D | CasaSmartFacile</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Courier New', monospace;
+            background: #000;
+            color: #0ff;
+            overflow-x: hidden;
+            perspective: 1000px;
+        }
+
+        /* Background animato stelle */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #fff;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; transform: scale(0.5); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* Header 3D */
+        .hero-3d {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            transform-style: preserve-3d;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 10vw, 8rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            background: linear-gradient(45deg, #0ff, #f0f, #0ff);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient 3s ease infinite, float 6s ease-in-out infinite;
+            text-shadow: 0 0 30px rgba(0,255,255,0.5);
+            transform: translateZ(100px);
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateZ(100px) translateY(0px); }
+            50% { transform: translateZ(100px) translateY(-20px); }
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: #f0f;
+            margin-top: 20px;
+            animation: pulse 2s infinite;
+            text-shadow: 0 0 20px #f0f;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Griglia 3D */
+        .grid-3d {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 50px;
+            max-width: 1400px;
+            margin: 0 auto;
+            transform-style: preserve-3d;
+        }
+
+        .card-3d {
+            background: linear-gradient(135deg, rgba(0,255,255,0.1), rgba(255,0,255,0.1));
+            border: 1px solid #0ff;
+            border-radius: 20px;
+            padding: 30px;
+            transform-style: preserve-3d;
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-3d::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(0,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s;
+            opacity: 0;
+        }
+
+        .card-3d:hover::before {
+            opacity: 1;
+            animation: shine 0.5s ease;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .card-3d:hover {
+            transform: translateZ(50px) rotateY(5deg) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0,255,255,0.3);
+            border-color: #f0f;
+        }
+
+        .card-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: spin 10s linear infinite;
+            display: inline-block;
+        }
+
+        @keyframes spin {
+            from { transform: rotateY(0deg); }
+            to { transform: rotateY(360deg); }
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            color: #0ff;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .card-desc {
+            color: #aaa;
+            line-height: 1.6;
+        }
+
+        /* Pulsante futuristico */
+        .btn-future {
+            display: inline-block;
+            padding: 20px 50px;
+            background: transparent;
+            border: 2px solid #0ff;
+            color: #0ff;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+            margin: 20px;
+            text-decoration: none;
+        }
+
+        .btn-future::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, #0ff, transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-future:hover::before {
+            left: 100%;
+        }
+
+        .btn-future:hover {
+            background: #0ff;
+            color: #000;
+            box-shadow: 0 0 30px #0ff;
+        }
+
+        /* Sezione statistiche animate */
+        .stats-section {
+            padding: 80px 20px;
+            text-align: center;
+            background: linear-gradient(180deg, transparent, rgba(0,255,255,0.05), transparent);
+        }
+
+        .stats-grid {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #0ff;
+            text-shadow: 0 0 20px #0ff;
+            animation: countUp 2s ease-out;
+        }
+
+        @keyframes countUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .stat-label {
+            color: #f0f;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 10px;
+        }
+
+        /* Ologramma */
+        .hologram {
+            width: 300px;
+            height: 300px;
+            margin: 50px auto;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: hologramFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes hologramFloat {
+            0%, 100% { transform: translateY(0) rotateX(0); }
+            50% { transform: translateY(-30px) rotateX(10deg); }
+        }
+
+        .hologram::before {
+            content: '🏠';
+            font-size: 150px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            filter: drop-shadow(0 0 20px #0ff);
+            animation: hologramPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes hologramPulse {
+            0%, 100% { opacity: 0.8; filter: drop-shadow(0 0 20px #0ff); }
+            50% { opacity: 1; filter: drop-shadow(0 0 40px #0ff) drop-shadow(0 0 80px #f0f); }
+        }
+
+        /* Scan line effect */
+        .scan-line {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, transparent, #0ff, transparent);
+            animation: scan 3s linear infinite;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        @keyframes scan {
+            0% { transform: translateY(-100vh); }
+            100% { transform: translateY(100vh); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 3rem; }
+            .grid-3d { grid-template-columns: 1fr; padding: 20px; }
+            .stats-grid { gap: 30px; }
+        }
+
+        /* Glitch effect */
+        .glitch {
+            position: relative;
+        }
+
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .glitch::before {
+            animation: glitch-1 0.3s infinite linear alternate-reverse;
+            color: #f0f;
+            z-index: -1;
+        }
+
+        .glitch::after {
+            animation: glitch-2 0.3s infinite linear alternate-reverse;
+            color: #0ff;
+            z-index: -2;
+        }
+
+        @keyframes glitch-1 {
+            0%, 100% { clip-path: inset(0 0 95% 0); transform: translate(-2px, -2px); }
+            20% { clip-path: inset(20% 0 60% 0); transform: translate(2px, 2px); }
+            40% { clip-path: inset(40% 0 40% 0); transform: translate(-2px, 2px); }
+            60% { clip-path: inset(60% 0 20% 0); transform: translate(2px, -2px); }
+            80% { clip-path: inset(80% 0 0 0); transform: translate(-2px, 2px); }
+        }
+
+        @keyframes glitch-2 {
+            0%, 100% { clip-path: inset(95% 0 0 0); transform: translate(2px, 2px); }
+            20% { clip-path: inset(60% 0 20% 0); transform: translate(-2px, -2px); }
+            40% { clip-path: inset(40% 0 40% 0); transform: translate(2px, -2px); }
+            60% { clip-path: inset(20% 0 60% 0); transform: translate(-2px, 2px); }
+            80% { clip-path: inset(0 0 95% 0); transform: translate(2px, -2px); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Scan line effect -->
+    <div class="scan-line"></div>
+
+    <!-- Animated stars background -->
+    <div class="stars" id="stars"></div>
+
+    <!-- Hero Section 3D -->
+    <section class="hero-3d">
+        <h1 class="hero-title glitch" data-text="CASA 2085">CASA 2085</h1>
+        <p class="hero-subtitle">▼ L'ABITAZIONE DEL FUTURO È GIÀ QUI ▼</p>
+        
+        <div class="hologram"></div>
+        
+        <div>
+            <a href="index.html" class="btn-future">← Torna al Presente</a>
+            <a href="#features" class="btn-future">Esplora il Futuro →</a>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <h2 style="font-size: 2.5rem; margin-bottom: 20px; text-transform: uppercase;">La Tua Casa in Numeri</h2>
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">85%</div>
+                <div class="stat-label">Risparmio Energetico</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">0.3s</div>
+                <div class="stat-label">Risposta Comandi</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">∞</div>
+                <div class="stat-label">Possibilità</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Grid 3D -->
+    <section id="features" class="grid-3d">
+        <div class="card-3d">
+            <div class="card-icon">🧠</div>
+            <h3 class="card-title">Intelligenza Artificiale</h3>
+            <p class="card-desc">La tua casa imara dalle tue abitudini. Si sveglia quando ti svegli, si addormenta quando dormi. Prevede i tuoi bisogni prima ancora che tu li esprima.</p>
+        </div>
+
+        <div class="card-3d">
+            <div class="card-icon">⚡</div>
+            <h3 class="card-title">Energia Quantica</h3>
+            <p class="card-desc">Zero emissioni, infinita efficienza. Sfrutta l'energia dell'ambiente con tecnologia avveniristica. Bolletta? Un ricordo del passato.</p>
+        </div>
+
+        <div class="card-3d">
+            <div class="card-icon">🛡️</div>
+            <h3 class="card-title">Sicurezza Olografica</h3>
+            <p class="card-desc">Difese attive che si materializzano solo quando necessario. Ologrammi deterrenti, campi di forza invisibili, riconoscimento biometrico quantico.</p>
+        </div>
+
+        <div class="card-3d">
+            <div class="card-icon">🌐</div>
+            <h3 class="card-title">Connessione Globale</h3>
+            <p class="card-desc">Controlla ogni aspetto della tua casa da qualsiasi punto del pianeta - o del sistema solare. Latenza zero, connessione instancabile.</p>
+        </div>
+
+        <div class="card-3d">
+            <div class="card-icon">🏥</div>
+            <h3 class="card-title">Health Monitoring</h3>
+            <p class="card-desc">Sensori ambientali controllano qualità dell'aria, umidità, temperatura ottimale per la tua salute. Previene malanni prima che arrivino.</p>
+        </div>
+
+        <div class="card-3d">
+            <div class="card-icon">✨</div>
+            <h3 class="card-title">Materiali Auto-Rigeneranti</h3>
+            <p class="card-desc">Pareti che si riparano da sole, superfici antibatteriche permanenti, colori che cambiano con l'umore. La manutenzione è storia antica.</p>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section style="text-align: center; padding: 100px 20px; background: linear-gradient(180deg, transparent, rgba(255,0,255,0.1));">
+        <h2 style="font-size: 3rem; margin-bottom: 30px; text-transform: uppercase; color: #f0f;">Il Futuro Inizia Oggi</h2>
+        <p style="font-size: 1.2rem; color: #aaa; max-width: 600px; margin: 0 auto 40px;">
+            Non devi aspettare il 2085. Con la domotica accessibile di CasaSmartFacile, puoi iniziare a vivere nel futuro... ora.
+        </p>
+        <a href="index.html" class="btn-future">Inizia il Tuo Viaggio →</a>
+    </section>
+
+    <script>
+        // Generate animated stars
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 200; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            starsContainer.appendChild(star);
+        }
+
+        // Parallax effect on mouse move
+        document.addEventListener('mousemove', (e) => {
+            const cards = document.querySelectorAll('.card-3d');
+            const x = (window.innerWidth - e.pageX) / 50;
+            const y = (window.innerHeight - e.pageY) / 50;
+            
+            cards.forEach((card, index) => {
+                const speed = (index + 1) * 0.5;
+                card.style.transform = `translateZ(${50 + index * 10}px) rotateY(${x * speed}deg) rotateX(${y * speed}deg)`;
+            });
+        });
+
+        // Glitch effect random
+        setInterval(() => {
+            const glitch = document.querySelector('.glitch');
+            if (glitch && Math.random() > 0.9) {
+                glitch.style.animation = 'none';
+                setTimeout(() => {
+                    glitch.style.animation = '';
+                }, 100);
+            }
+        }, 3000);
+    </script>
+</body>
+</html>
