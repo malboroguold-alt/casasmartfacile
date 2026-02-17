@@ -495,14 +495,14 @@
             
             <div class="device-category">
                 <h3>💡 Illuminazione</h3>
-                <div class="device-item" draggable="true" data-device="Lampadina Smart" data-price="15" data-saving="25">
+                <div class="device-item" draggable="true" data-device="Lampadina Smart" data-price="15" data-saving="25" data-asin="B086MT39RL">
                     <span class="device-icon">💡</span>
                     <div class="device-info">
                         <div class="device-name">Lampadina Smart</div>
                         <div class="device-price">€15 | Risparmio €25/anno</div>
                     </div>
                 </div>
-                <div class="device-item" draggable="true" data-device="Striscia LED" data-price="29" data-saving="40">
+                <div class="device-item" draggable="true" data-device="Striscia LED" data-price="29" data-saving="40" data-asin="B07XT8J3HZ">
                     <span class="device-icon">✨</span>
                     <div class="device-info">
                         <div class="device-name">Striscia LED</div>
@@ -513,14 +513,14 @@
 
             <div class="device-category">
                 <h3>🔌 Controllo</h3>
-                <div class="device-item" draggable="true" data-device="Presa Smart" data-price="12" data-saving="30">
+                <div class="device-item" draggable="true" data-device="Presa Smart" data-price="12" data-saving="30" data-asin="B0DWJ2YYB4">
                     <span class="device-icon">🔌</span>
                     <div class="device-info">
                         <div class="device-name">Presa Smart</div>
                         <div class="device-price">€12 | Risparmio €30/anno</div>
                     </div>
                 </div>
-                <div class="device-item" draggable="true" data-device="Interruttore Smart" data-price="25" data-saving="35">
+                <div class="device-item" draggable="true" data-device="Interruttore Smart" data-price="25" data-saving="35" data-asin="B07P5YZCBQ">
                     <span class="device-icon">🔲</span>
                     <div class="device-info">
                         <div class="device-name">Interruttore Smart</div>
@@ -531,14 +531,14 @@
 
             <div class="device-category">
                 <h3>🌡️ Clima</h3>
-                <div class="device-item" draggable="true" data-device="Termostato Smart" data-price="89" data-saving="150">
+                <div class="device-item" draggable="true" data-device="Termostato Smart" data-price="89" data-saving="150" data-asin="B09KNSL6YH">
                     <span class="device-icon">🌡️</span>
                     <div class="device-info">
                         <div class="device-name">Termostato Smart</div>
                         <div class="device-price">€89 | Risparmio €150/anno</div>
                     </div>
                 </div>
-                <div class="device-item" draggable="true" data-device="Sensore Temperatura" data-price="15" data-saving="20">
+                <div class="device-item" draggable="true" data-device="Sensore Temperatura" data-price="15" data-saving="20" data-asin="B09WRB33KM">
                     <span class="device-icon">📊</span>
                     <div class="device-info">
                         <div class="device-name">Sensore Temp/Hum</div>
@@ -549,14 +549,14 @@
 
             <div class="device-category">
                 <h3>🛡️ Sicurezza</h3>
-                <div class="device-item" draggable="true" data-device="Telecamera WiFi" data-price="45" data-saving="0">
+                <div class="device-item" draggable="true" data-device="Telecamera WiFi" data-price="45" data-saving="0" data-asin="B083Q89SW6">
                     <span class="device-icon">📹</span>
                     <div class="device-info">
                         <div class="device-name">Telecamera WiFi</div>
                         <div class="device-price">€45 | Sicurezza</div>
                     </div>
                 </div>
-                <div class="device-item" draggable="true" data-device="Sensore Porta" data-price="18" data-saving="0">
+                <div class="device-item" draggable="true" data-device="Sensore Porta" data-price="18" data-saving="0" data-asin="B09Y1X35VR">
                     <span class="device-icon">🚪</span>
                     <div class="device-info">
                         <div class="device-name">Sensore Porta</div>
@@ -567,14 +567,14 @@
 
             <div class="device-category">
                 <h3>🤖 Hub</h3>
-                <div class="device-item" draggable="true" data-device="Home Assistant" data-price="89" data-saving="200">
+                <div class="device-item" draggable="true" data-device="Home Assistant" data-price="89" data-saving="200" data-asin="B0CMV77LNV">
                     <span class="device-icon">🧠</span>
                     <div class="device-info">
                         <div class="device-name">Home Assistant</div>
                         <div class="device-price">€89 | Risparmio €200/anno</div>
                     </div>
                 </div>
-                <div class="device-item" draggable="true" data-device="Amazon Echo" data-price="59" data-saving="50">
+                <div class="device-item" draggable="true" data-device="Amazon Echo" data-price="59" data-saving="50" data-asin="B09B8X9RGM">
                     <span class="device-icon">🔊</span>
                     <div class="device-info">
                         <div class="device-name">Amazon Echo</div>
@@ -696,7 +696,7 @@
                 </div>
             </div>
 
-            <a href="https://www.amazon.it/s?k=domotica+smart+home&tag=casasmartfaci-21" target="_blank" class="btn btn-primary" style="display: block; text-align: center; text-decoration: none; margin-top: 20px;">
+            <a href="#" id="amazon-buy-button" target="_blank" class="btn btn-primary" style="display: block; text-align: center; text-decoration: none; margin-top: 20px;">
                 🛍️ Acquista su Amazon
             </a>
         </div>
@@ -721,10 +721,11 @@
         deviceItems.forEach(item => {
             // Desktop: dragstart
             item.addEventListener('dragstart', (e) => {
-                console.log('Drag start:', item.dataset.device, item.dataset.price);
+                console.log('Drag start:', item.dataset.device, item.dataset.price, item.dataset.asin);
                 e.dataTransfer.setData('device', item.dataset.device);
                 e.dataTransfer.setData('price', item.dataset.price);
                 e.dataTransfer.setData('saving', item.dataset.saving);
+                e.dataTransfer.setData('asin', item.dataset.asin);
             });
             
             // Mobile/click: selezione
@@ -733,7 +734,8 @@
                 selectedDevice = {
                     name: item.dataset.device,
                     price: parseInt(item.dataset.price) || 0,
-                    saving: parseInt(item.dataset.saving) || 0
+                    saving: parseInt(item.dataset.saving) || 0,
+                    asin: item.dataset.asin
                 };
                 
                 // Evidenzia il dispositivo selezionato
@@ -763,10 +765,11 @@
                 const deviceName = e.dataTransfer.getData('device');
                 const price = parseInt(e.dataTransfer.getData('price')) || 0;
                 const saving = parseInt(e.dataTransfer.getData('saving')) || 0;
+                const asin = e.dataTransfer.getData('asin');
                 const room = zone.id.replace('zone-', '');
 
-                console.log('Drop:', deviceName, price, saving, room);
-                addDeviceToRoom(room, deviceName, price, saving);
+                console.log('Drop:', deviceName, price, saving, asin, room);
+                addDeviceToRoom(room, deviceName, price, saving, asin);
             });
             
             // Click per mobile/selezione
@@ -774,7 +777,7 @@
                 if (selectedDevice) {
                     const room = zone.id.replace('zone-', '');
                     console.log('Click drop:', selectedDevice, room);
-                    addDeviceToRoom(room, selectedDevice.name, selectedDevice.price, selectedDevice.saving);
+                    addDeviceToRoom(room, selectedDevice.name, selectedDevice.price, selectedDevice.saving, selectedDevice.asin);
                     
                     // Reset selezione
                     selectedDevice = null;
@@ -786,12 +789,12 @@
             });
         });
 
-        function addDeviceToRoom(room, deviceName, price, saving) {
+        function addDeviceToRoom(room, deviceName, price, saving, asin) {
             // Assicurati che siano numeri validi
             const numPrice = parseInt(price) || 0;
             const numSaving = parseInt(saving) || 0;
             
-            houseDevices[room].push({ name: deviceName, price: numPrice, saving: numSaving });
+            houseDevices[room].push({ name: deviceName, price: numPrice, saving: numSaving, asin: asin });
 
             const zone = document.getElementById(`zone-${room}`);
             if (zone.querySelector('span')) {
@@ -805,7 +808,7 @@
             deviceEl.onclick = () => removeDevice(room, deviceName);
             zone.appendChild(deviceEl);
 
-            console.log(`Aggiunto ${deviceName} a ${room}: €${numPrice}, risparmio €${numSaving}`);
+            console.log(`Aggiunto ${deviceName} a ${room}: €${numPrice}, risparmio €${numSaving}, ASIN: ${asin}`);
             updateStats();
         }
 
@@ -900,19 +903,40 @@
                 });
             });
 
+            let amazonLink = '';
+
             if (allDevices.length === 0) {
                 listEl.innerHTML = '<li style="color: #666; text-align: center;">Nessun dispositivo selezionato</li>';
+            } else if (allDevices.length === 1) {
+                // Link singolo prodotto
+                const asin = allDevices[0].asin;
+                amazonLink = `https://www.amazon.it/dp/${asin}?tag=casasmartfaci-21`;
+                
+                const li = document.createElement('li');
+                li.className = 'shopping-item';
+                li.innerHTML = `
+                    <div class="shopping-item-info">
+                        <span>${allDevices[0].name}</span>
+                        <span style="color: #666; font-size: 0.8rem;">(1x - ${allDevices[0].room})</span>
+                    </div>
+                    <div class="shopping-item-price">€${allDevices[0].price}</div>
+                `;
+                listEl.appendChild(li);
             } else {
-                // Raggruppa per tipo
+                // Raggruppa per tipo e crea link carrello
                 const grouped = {};
                 allDevices.forEach(d => {
                     if (!grouped[d.name]) {
-                        grouped[d.name] = { count: 0, price: d.price, saving: d.saving, rooms: [] };
+                        grouped[d.name] = { count: 0, price: d.price, saving: d.saving, rooms: [], asin: d.asin };
                     }
                     grouped[d.name].count++;
                     grouped[d.name].rooms.push(d.room);
                 });
 
+                // Costruisci link carrello Amazon
+                let cartUrl = 'https://www.amazon.it/gp/aws/cart/add.html?AssociateTag=casasmartfaci-21';
+                let index = 1;
+                
                 Object.entries(grouped).forEach(([name, data]) => {
                     const li = document.createElement('li');
                     li.className = 'shopping-item';
@@ -924,7 +948,15 @@
                         <div class="shopping-item-price">€${data.price * data.count}</div>
                     `;
                     listEl.appendChild(li);
+                    
+                    // Aggiungi ASIN al link carrello
+                    if (data.asin) {
+                        cartUrl += `&ASIN.${index}=${data.asin}&Quantity.${index}=${data.count}`;
+                        index++;
+                    }
                 });
+                
+                amazonLink = cartUrl;
             }
 
             document.getElementById('modal-total').textContent = `€${totalCost}`;
@@ -932,6 +964,18 @@
 
             const roi = totalSavings > 0 ? Math.ceil(totalCost / (totalSavings / 12)) : 0;
             document.getElementById('modal-roi').textContent = roi > 0 ? `${roi} mesi` : 'N/A';
+
+            // Aggiorna link Amazon nel modal
+            const buyButton = document.getElementById('amazon-buy-button');
+            if (buyButton) {
+                buyButton.href = amazonLink || '#';
+                if (allDevices.length === 0) {
+                    buyButton.style.display = 'none';
+                } else {
+                    buyButton.style.display = 'block';
+                    buyButton.textContent = allDevices.length === 1 ? '🛍️ Vedi su Amazon' : '🛒 Aggiungi tutto al carrello';
+                }
+            }
 
             document.getElementById('shoppingModal').classList.add('active');
         }
